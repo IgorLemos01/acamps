@@ -1,8 +1,6 @@
 import { MapPin, Instagram, Heart } from 'lucide-react';
-
 const Footer = () => {
-  return (
-    <footer id="contato" className="bg-primary text-primary-foreground py-16">
+  return <footer id="contato" className="bg-primary text-primary-foreground py-16">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-12">
           {/* Logo e Descrição */}
@@ -35,14 +33,9 @@ const Footer = () => {
           <div className="text-center md:text-left">
             <h4 className="text-xl font-bold mb-4">Siga-nos</h4>
             <div className="flex justify-center md:justify-start space-x-4">
-              <a
-                href="https://instagram.com/acamps_oficial"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-2 bg-accent hover:bg-accent/90 text-accent-foreground px-4 py-2 rounded-full transition-all duration-300 hover:scale-105 shadow-glow"
-              >
+              <a href="https://instagram.com/acamps_oficial" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 bg-accent hover:bg-accent/90 text-accent-foreground px-4 py-2 rounded-full transition-all duration-300 hover:scale-105 shadow-glow">
                 <Instagram className="w-5 h-5" />
-                <span className="font-semibold">@acamps_oficial</span>
+                <span className="font-semibold">@juventudearacaju</span>
               </a>
             </div>
             
@@ -64,8 +57,6 @@ const Footer = () => {
           </p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;

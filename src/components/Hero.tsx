@@ -13,7 +13,7 @@ const Hero = () => {
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         <h1 className="font-brand text-6xl md:text-8xl lg:text-9xl text-foreground mb-6 animate-fade-in">ACAMP'S 2026.1</h1>
         
-        <p className="text-xl md:text-2xl lg:text-3xl text-foreground/90 mb-8 animate-slide-up font-light">Não se descreve, </p>
+        <p className="text-xl md:text-2xl lg:text-3xl text-foreground/90 mb-8 animate-slide-up font-light">Não se descreve, se sente!</p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up">
           <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold text-lg px-8 py-4 rounded-full shadow-glow transition-all duration-300 hover:scale-105" onClick={() => document.getElementById('produtos')?.scrollIntoView({
