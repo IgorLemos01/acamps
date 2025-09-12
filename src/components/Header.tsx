@@ -26,30 +26,12 @@ const Header = () => {
             ACAMP'S
           </div>
           
-          <div className="hidden md:flex space-x-8">
+          <div className="flex items-center">
             <a 
-              href="#evento" 
-              className="text-foreground hover:text-secondary transition-colors duration-300 font-semibold"
+              href="/inscricao" 
+              className="bg-gradient-brand hover:bg-gradient-secondary text-foreground font-bold px-8 py-3 rounded-full shadow-brand transition-all duration-300 hover:shadow-glow hover:scale-105"
             >
-              Evento
-            </a>
-            <a 
-              href="#produtos" 
-              className="text-foreground hover:text-secondary transition-colors duration-300 font-semibold"
-            >
-              Produtos
-            </a>
-            <a 
-              href="#testemunhos" 
-              className="text-foreground hover:text-secondary transition-colors duration-300 font-semibold"
-            >
-              Testemunhos
-            </a>
-            <a 
-              href="#contato" 
-              className="text-foreground hover:text-secondary transition-colors duration-300 font-semibold"
-            >
-              Contato
+              Inscreva-se Agora
             </a>
           </div>
         </nav>
