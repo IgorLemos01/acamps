@@ -30,7 +30,7 @@ const EventLocation = () => {
                 <Calendar className="w-8 h-8 text-accent" />
                 <h3 className="text-2xl font-bold text-card-foreground">Data</h3>
               </div>
-              <p className="text-lg text-card-foreground">15 a 17 de Janeiro, 2026</p>
+              <p className="text-lg text-card-foreground">7 a 11 de Janeiro, 2026</p>
             </Card>
             
             <Card className="p-6 bg-secondary/20 shadow-brand">
