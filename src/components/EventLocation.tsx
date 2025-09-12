@@ -23,9 +23,9 @@ const EventLocation = () => {
                 <h3 className="text-2xl font-bold">Endereço</h3>
               </div>
               <p className="text-lg leading-relaxed">
-                Parque Nacional da Serra Verde<br />
-                Estrada do Camping, 1000<br />
-                Vila Verde - SP, 12345-678
+                Estr. da Pitanga Seca, 1960<br />
+                São Cristóvão - SE<br />
+                49100-000
               </p>
             </Card>
             
