@@ -8,10 +8,7 @@ const Footer = () => {
             <h3 className="font-brand text-4xl mb-4 text-secondary">
               ACAMP'S
             </h3>
-            <p className="text-lg leading-relaxed">
-              O maior evento de aventura e camping da região. 
-              Conectando pessoas com a natureza através de experiências únicas.
-            </p>
+            <p className="text-lg leading-relaxed">Uma experiência transformadora e inesquecível para as suas férias.</p>
           </div>
           
           {/* Endereço */}
@@ -40,9 +37,7 @@ const Footer = () => {
             </div>
             
             <div className="mt-6">
-              <p className="text-lg">
-                📧 contato@acamps.com.br
-              </p>
+              <p className="text-lg">📧 juventudearacaju@gmail.com</p>
             </div>
           </div>
         </div>
