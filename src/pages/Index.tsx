@@ -2,7 +2,7 @@ import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import EventLocation from '@/components/EventLocation';
 import Products from '@/components/Products';
-import Registration from '@/components/Registration';
+import YouTubeVideo from '@/components/YouTubeVideo';
 import Testimonials from '@/components/Testimonials';
 import Footer from '@/components/Footer';
 import WhatsAppFloat from '@/components/WhatsAppFloat';
@@ -14,7 +14,7 @@ const Index = () => {
       <Hero />
       <EventLocation />
       <Products />
-      <Registration />
+      <YouTubeVideo />
       <Testimonials />
       <Footer />
       <WhatsAppFloat />

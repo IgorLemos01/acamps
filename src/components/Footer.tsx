@@ -18,11 +18,11 @@ const Footer = () => {
               <h4 className="text-xl font-bold">Nossa Casa</h4>
             </div>
             <address className="text-lg leading-relaxed not-italic">
-              Rua das Aventuras, 123<br />
-              Centro - Vila Verde<br />
-              SP, 12345-678<br />
+              Centro - Av. Hermes Fontes, 146<br />
+              Suíça, Aracaju - SE<br />
+              49015-260<br />
               <br />
-              <strong>Telefone:</strong> (11) 99999-9999
+              <strong>Telefone:</strong> (79) 3012-5777
             </address>
           </div>
           
@@ -30,7 +30,7 @@ const Footer = () => {
           <div className="text-center md:text-left">
             <h4 className="text-xl font-bold mb-4">Siga-nos</h4>
             <div className="flex justify-center md:justify-start space-x-4">
-              <a href="https://instagram.com/acamps_oficial" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 bg-accent hover:bg-accent/90 text-accent-foreground px-4 py-2 rounded-full transition-all duration-300 hover:scale-105 shadow-glow">
+              <a href="https://www.instagram.com/juventudearacaju?igsh=NW9mMGJzaHo3Y3Zy" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 bg-accent hover:bg-accent/90 text-accent-foreground px-4 py-2 rounded-full transition-all duration-300 hover:scale-105 shadow-glow">
                 <Instagram className="w-5 h-5" />
                 <span className="font-semibold">@juventudearacaju</span>
               </a>
@@ -44,11 +44,8 @@ const Footer = () => {
         
         {/* Copyright */}
         <div className="border-t border-primary-foreground/20 mt-12 pt-8 text-center">
-          <p className="flex items-center justify-center text-lg">
-            © 2024 ACAMP'S. Todos os direitos reservados. 
-            <span className="ml-2 flex items-center">
-              Feito com <Heart className="w-4 h-4 text-accent mx-1 fill-current" /> para aventureiros
-            </span>
+          <p className="text-lg">
+            © 2024 ACAMP'S. Todos os direitos reservados.
           </p>
         </div>
       </div>

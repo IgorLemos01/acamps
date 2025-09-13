@@ -2,9 +2,7 @@ import { MessageCircle } from 'lucide-react';
 
 const WhatsAppFloat = () => {
   const handleWhatsAppClick = () => {
-    const message = 'Olá! Gostaria de saber mais sobre o evento ACAMP\'S';
-    const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+    window.open('https://contate.me/5579988801082', '_blank');
   };
 
   return (

@@ -19,7 +19,7 @@ const EventLocation = () => {
                 <h3 className="text-2xl font-bold">Endereço</h3>
               </div>
               <p className="text-lg leading-relaxed">
-                Estr. da Pitanga Seca, 1960<br />
+                2048,, Estr. da Pitanga Seca, 1960<br />
                 São Cristóvão - SE<br />
                 49100-000
               </p>
@@ -46,7 +46,7 @@ const EventLocation = () => {
           <div className="animate-fade-in">
             <Card className="p-4 shadow-brand">
               <div className="aspect-video rounded-lg overflow-hidden">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.853950367623!2d-46.73549938556713!3d-23.565376784692!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5755ea608b47%3A0xf2d061bb5c5b8e94!2sSão Paulo - SP!5e0!3m2!1spt!2sbr!4v1234567890123" width="100%" height="100%" style={{
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.1946470547!2d-37.0654!3d-10.9162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x71ab20a8ae00001%3A0x3ae8ae3ae3ae8ae3!2sEstr.%20da%20Pitanga%20Seca%2C%201960%2C%20São%20Cristóvão%20-%20SE!5e0!3m2!1spt!2sbr!4v1234567890123" width="100%" height="100%" style={{
                 border: 0
               }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="rounded-lg"></iframe>
               </div>
