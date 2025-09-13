@@ -102,93 +102,101 @@ const RegistrationForm = () => {
     <div className="min-h-screen bg-background py-20">
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto">
-          <Card className="p-8 bg-card shadow-brand">
-            <div className="mb-8">
-              <div className="flex justify-between items-center mb-4">
-                <h1 className="font-brand text-3xl text-foreground">ACAMP'S</h1>
-                <span className="text-sm text-muted-foreground">Página {currentPage} de 5</span>
+          <Card className="p-8 bg-card shadow-brand border-2 border-primary/20">
+              <div className="mb-8">
+                <div className="flex justify-between items-center mb-6">
+                  <h1 className="font-brand text-4xl text-primary">ACAMP'S</h1>
+                  <span className="text-sm text-primary font-semibold bg-primary/10 px-3 py-1 rounded-full">
+                    Página {currentPage} de 5
+                  </span>
+                </div>
+                <div className="w-full bg-muted/30 rounded-full h-3 shadow-inner">
+                  <div 
+                    className="bg-gradient-brand h-3 rounded-full transition-all duration-500 shadow-glow"
+                    style={{ width: `${(currentPage / 5) * 100}%` }}
+                  />
+                </div>
               </div>
-              <div className="w-full bg-muted rounded-full h-2">
-                <div 
-                  className="bg-primary h-2 rounded-full transition-all duration-300"
-                  style={{ width: `${(currentPage / 5) * 100}%` }}
-                />
-              </div>
-            </div>
 
             <form onSubmit={handleSubmit}>
               {currentPage === 1 && (
                 <div className="space-y-6">
-                  <h2 className="text-2xl font-bold text-foreground mb-6">Dados Pessoais</h2>
+                  <h2 className="text-3xl font-bold text-foreground mb-8 text-center">Dados Pessoais</h2>
                   
-                  <div className="space-y-4">
-                    <div>
-                      <Label htmlFor="nome">Nome completo</Label>
-                      <Input
-                        id="nome"
-                        value={formData.nome}
-                        onChange={(e) => handleInputChange('nome', e.target.value)}
-                        required
-                        placeholder="Nome completo"
-                      />
-                    </div>
+                    <div className="space-y-6">
+                      <div>
+                        <Label htmlFor="nome" className="text-foreground font-semibold">Nome completo</Label>
+                        <Input
+                          id="nome"
+                          value={formData.nome}
+                          onChange={(e) => handleInputChange('nome', e.target.value)}
+                          required
+                          placeholder="Nome completo"
+                          className="mt-2 border-2 border-primary/20 focus:border-primary bg-card text-card-foreground"
+                        />
+                      </div>
                     
-                    <div>
-                      <Label htmlFor="email">E-mail</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={(e) => handleInputChange('email', e.target.value)}
-                        required
-                        placeholder="E-mail"
-                      />
-                    </div>
-                    
-                    <div>
-                      <Label htmlFor="telefone">Telefone/WhatsApp</Label>
-                      <Input
-                        id="telefone"
-                        value={formData.telefone}
-                        onChange={(e) => handleInputChange('telefone', e.target.value)}
-                        required
-                        placeholder="Telefone/WhatsApp"
-                      />
-                    </div>
-                    
-                    <div>
-                      <Label htmlFor="idade">Idade</Label>
-                      <Input
-                        id="idade"
-                        type="number"
-                        value={formData.idade}
-                        onChange={(e) => handleInputChange('idade', e.target.value)}
-                        required
-                        placeholder="Idade"
-                      />
-                    </div>
-                    
-                    <div>
-                      <Label htmlFor="cpf">CPF</Label>
-                      <Input
-                        id="cpf"
-                        value={formData.cpf}
-                        onChange={(e) => handleInputChange('cpf', e.target.value)}
-                        required
-                        placeholder="CPF"
-                      />
-                    </div>
-                    
-                    <div>
-                      <Label htmlFor="rg">RG</Label>
-                      <Input
-                        id="rg"
-                        value={formData.rg}
-                        onChange={(e) => handleInputChange('rg', e.target.value)}
-                        required
-                        placeholder="RG"
-                      />
-                    </div>
+                      <div>
+                        <Label htmlFor="email" className="text-foreground font-semibold">E-mail</Label>
+                        <Input
+                          id="email"
+                          type="email"
+                          value={formData.email}
+                          onChange={(e) => handleInputChange('email', e.target.value)}
+                          required
+                          placeholder="E-mail"
+                          className="mt-2 border-2 border-primary/20 focus:border-primary bg-card text-card-foreground"
+                        />
+                      </div>
+                      
+                      <div>
+                        <Label htmlFor="telefone" className="text-foreground font-semibold">Telefone/WhatsApp</Label>
+                        <Input
+                          id="telefone"
+                          value={formData.telefone}
+                          onChange={(e) => handleInputChange('telefone', e.target.value)}
+                          required
+                          placeholder="Telefone/WhatsApp"
+                          className="mt-2 border-2 border-primary/20 focus:border-primary bg-card text-card-foreground"
+                        />
+                      </div>
+                      
+                      <div>
+                        <Label htmlFor="idade" className="text-foreground font-semibold">Idade</Label>
+                        <Input
+                          id="idade"
+                          type="number"
+                          value={formData.idade}
+                          onChange={(e) => handleInputChange('idade', e.target.value)}
+                          required
+                          placeholder="Idade"
+                          className="mt-2 border-2 border-primary/20 focus:border-primary bg-card text-card-foreground"
+                        />
+                      </div>
+                      
+                      <div>
+                        <Label htmlFor="cpf" className="text-foreground font-semibold">CPF</Label>
+                        <Input
+                          id="cpf"
+                          value={formData.cpf}
+                          onChange={(e) => handleInputChange('cpf', e.target.value)}
+                          required
+                          placeholder="CPF"
+                          className="mt-2 border-2 border-primary/20 focus:border-primary bg-card text-card-foreground"
+                        />
+                      </div>
+                      
+                      <div>
+                        <Label htmlFor="rg" className="text-foreground font-semibold">RG</Label>
+                        <Input
+                          id="rg"
+                          value={formData.rg}
+                          onChange={(e) => handleInputChange('rg', e.target.value)}
+                          required
+                          placeholder="RG"
+                          className="mt-2 border-2 border-primary/20 focus:border-primary bg-card text-card-foreground"
+                        />
+                      </div>
                   </div>
                   
                   <Button onClick={nextPage} className="w-full">Avançar</Button>
@@ -197,7 +205,7 @@ const RegistrationForm = () => {
 
               {currentPage === 2 && (
                 <div className="space-y-6">
-                  <h2 className="text-2xl font-bold text-foreground mb-6">Perguntas Gerais</h2>
+                  <h2 className="text-3xl font-bold text-foreground mb-8 text-center">Perguntas Gerais</h2>
                   
                   <div className="space-y-4">
                     <div>
@@ -280,7 +288,7 @@ const RegistrationForm = () => {
 
               {currentPage === 3 && (
                 <div className="space-y-6">
-                  <h2 className="text-2xl font-bold text-foreground mb-6">Contato de Emergência</h2>
+                  <h2 className="text-3xl font-bold text-foreground mb-8 text-center">Contato de Emergência</h2>
                   
                   <div className="space-y-4">
                     <div>
@@ -326,7 +334,7 @@ const RegistrationForm = () => {
 
               {currentPage === 4 && (
                 <div className="space-y-6">
-                  <h2 className="text-2xl font-bold text-foreground mb-6">Sacramentos</h2>
+                  <h2 className="text-3xl font-bold text-foreground mb-8 text-center">Sacramentos</h2>
                   
                   <div className="space-y-4">
                     <div>
@@ -391,7 +399,7 @@ const RegistrationForm = () => {
 
               {currentPage === 5 && (
                 <div className="space-y-6">
-                  <h2 className="text-2xl font-bold text-foreground mb-6">Termo de Compromisso</h2>
+                  <h2 className="text-3xl font-bold text-foreground mb-8 text-center">Termo de Compromisso</h2>
                   
                   <div className="space-y-4">
                     <p className="text-sm text-muted-foreground">

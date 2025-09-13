@@ -22,22 +22,11 @@ const Header = () => {
     >
       <div className="container mx-auto px-4 py-4">
         <nav className="flex items-center justify-between">
-          <a href="/" className="font-brand text-3xl md:text-4xl text-foreground animate-bounce-gentle hover:scale-105 transition-all duration-300">
+          <a href="/" className="font-brand text-3xl md:text-4xl text-foreground hover:scale-105 transition-all duration-300">
             ACAMP'S
           </a>
           
-          <div className="flex items-center space-x-6">
-            <div className="hidden md:flex items-center space-x-6">
-              <a href="#evento" className="text-foreground hover:text-secondary transition-colors duration-300 font-semibold">
-                Localização
-              </a>
-              <a href="#produtos" className="text-foreground hover:text-secondary transition-colors duration-300 font-semibold">
-                Produtos
-              </a>
-              <a href="#testemunhos" className="text-foreground hover:text-secondary transition-colors duration-300 font-semibold">
-                Testemunhos
-              </a>
-            </div>
+          <div className="flex items-center">
             <a 
               href="/inscricao" 
               className="bg-gradient-brand hover:bg-gradient-secondary text-foreground font-bold px-8 py-3 rounded-full shadow-brand transition-all duration-300 hover:shadow-glow hover:scale-105"
