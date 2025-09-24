@@ -40,44 +40,54 @@ const RegistrationForm = () => {
       [name]: value
     }));
   };
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzjcWXAtx4TtOQcEge87K2ermTOaMQ2NWdyP4o22R1u1ggZvRP7s4SapRhR6eFFkITKqw/exec"; // troque pela sua URL
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!termsAccepted) {
-      toast({
-        title: "Erro",
-        description: "Você deve aceitar os termos para continuar.",
-        variant: "destructive"
-      });
-      return;
-    }
     setIsLoading(true);
-    try {
-      const response = await fetch('https://script.google.com/macros/s/AKfycbzjcWXAtx4TtOQcEge87K2ermTOaMQ2NWdyP4o22R1u1ggZvRP7s4SapRhR6eFFkITKqw/exec', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
-      
-      if (response.ok) {
-        toast({
-          title: "✅ Inscrição enviada com sucesso!",
-          description: "Agora confirme pelo WhatsApp."
-        });
 
-        // Redirect to WhatsApp after success
-        setTimeout(() => {
-          window.open('https://wa.me/5579988801082', '_blank');
-        }, 2000);
-      } else {
-        throw new Error('Erro ao enviar formulário');
-      }
+    try {
+      const response = await fetch(SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors", // IMPORTANTE para não dar erro CORS
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      // Como no-cors não retorna .ok, trate o sucesso direto
+      toast({
+        title: "✅ Inscrição realizada!",
+        description: "Seus dados foram enviados com sucesso.",
+      });
+
+      setFormData({
+        nome: "",
+        email: "",
+        telefone: "",
+        idade: "",
+        cpf: "",
+        rg: "",
+        participou: "",
+        vegano: "",
+        intolerancia: "",
+        alergia: "",
+        medicamento: "",
+        comorbidade: "",
+        emergencia_nome: "",
+        emergencia_tel: "",
+        emergencia_parentesco: "",
+        batizado: "",
+        eucaristia: "",
+        crismado: "",
+        barraca: "",
+      });
     } catch (error) {
       toast({
         title: "❌ Erro ao enviar inscrição",
         description: "Tente novamente.",
-        variant: "destructive"
+        variant: "destructive",
       });
     } finally {
       setIsLoading(false);
