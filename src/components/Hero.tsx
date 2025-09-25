@@ -16,13 +16,17 @@ const Hero = () => {
         <p className="text-xl md:text-2xl lg:text-3xl text-foreground/90 mb-8 animate-slide-up font-light">Não se descreve, se sente!</p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up">
+          <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold text-lg px-8 py-4 rounded-full shadow-glow transition-all duration-300 hover:scale-105" onClick={() => window.location.href = '/inscricao'}>
+            Inscreva-se Agora
+          </Button>
+          
           <Button variant="outline" size="lg" className="border-2 border-foreground text-foreground hover:bg-foreground hover:text-primary font-bold text-lg px-8 py-4 rounded-full transition-all duration-300 hover:scale-105" onClick={() => document.getElementById('evento')?.scrollIntoView({
           behavior: 'smooth'
         })}>
             Localização
           </Button>
           
-          <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold text-lg px-8 py-4 rounded-full shadow-glow transition-all duration-300 hover:scale-105" onClick={() => document.getElementById('produtos')?.scrollIntoView({
+          <Button variant="outline" size="lg" className="border-2 border-foreground text-foreground hover:bg-foreground hover:text-primary font-bold text-lg px-8 py-4 rounded-full transition-all duration-300 hover:scale-105" onClick={() => document.getElementById('produtos')?.scrollIntoView({
           behavior: 'smooth'
         })}>
             Ver Produtos
