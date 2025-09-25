@@ -47,13 +47,19 @@ const RegistrationForm = () => {
     setIsLoading(true);
 
     try {
+      // Converter formData para URLSearchParams (application/x-www-form-urlencoded)
+      const params = new URLSearchParams();
+      Object.entries(formData).forEach(([key, value]) => {
+        params.append(key, value);
+      });
+
       const response = await fetch(SCRIPT_URL, {
         method: "POST",
         mode: "no-cors", // IMPORTANTE para não dar erro CORS
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: JSON.stringify(formData),
+        body: params.toString(),
       });
 
       // Como no-cors não retorna .ok, trate o sucesso direto
