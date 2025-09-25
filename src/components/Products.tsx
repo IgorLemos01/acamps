@@ -4,15 +4,15 @@ import { ShoppingCart } from 'lucide-react';
 
 const products = [{
   id: 1,
-  name: 'Produtos em Breve',
+  name: 'Produtos em breve',
   description: 'Aguarde... produtos exclusivos chegando em breve!'
 }, {
   id: 2,
-  name: 'Equipamentos Especiais',
+  name: 'Produtos em breve',
   description: 'Aguarde... equipamentos de alta qualidade para sua aventura!'
 }, {
   id: 3,
-  name: 'Acessórios Únicos',
+  name: 'Produtos em breve',
   description: 'Aguarde... acessórios exclusivos do ACAMP\'S!'
 }];
 

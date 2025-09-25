@@ -64,9 +64,12 @@ const InscricaoSaude = () => {
       <main className="pt-24 pb-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h1 className="font-brand text-4xl md:text-6xl text-foreground mb-4 animate-fade-in">
+            <a href="/" className="font-brand text-4xl md:text-6xl text-foreground mb-4 animate-fade-in hover:text-primary transition-colors duration-300 inline-block">
+              ACAMP'S
+            </a>
+            <h2 className="text-2xl md:text-3xl text-muted-foreground mb-4">
               Informações de Saúde
-            </h1>
+            </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto animate-slide-up">
               Preencha as informações médicas e religiosas
             </p>

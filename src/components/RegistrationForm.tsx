@@ -68,27 +68,8 @@ const RegistrationForm = () => {
         description: "Seus dados foram enviados com sucesso.",
       });
 
-      setFormData({
-        nome: "",
-        email: "",
-        telefone: "",
-        idade: "",
-        cpf: "",
-        rg: "",
-        participou: "",
-        vegano: "",
-        intolerancia: "",
-        alergia: "",
-        medicamento: "",
-        comorbidade: "",
-        emergencia_nome: "",
-        emergencia_tel: "",
-        emergencia_parentesco: "",
-        batizado: "",
-        eucaristia: "",
-        crismado: "",
-        barraca: "",
-      });
+      // Redirecionar para a página de pagamento
+      window.location.href = '/pagamento';
     } catch (error) {
       toast({
         title: "❌ Erro ao enviar inscrição",
@@ -111,7 +92,7 @@ const RegistrationForm = () => {
           <Card className="p-8 bg-white/10 backdrop-blur-sm shadow-brand border-2 border-white/20 rounded-2xl">
               <div className="mb-8">
                 <div className="flex justify-between items-center mb-6">
-                  <h1 className="font-brand text-4xl text-white">ACAMP'S</h1>
+                  <a href="/" className="font-brand text-4xl text-white hover:text-secondary transition-colors duration-300">ACAMP'S</a>
                   <span className="text-sm text-white font-semibold bg-white/20 px-3 py-1 rounded-full">
                     Página {currentPage} de 5
                   </span>
