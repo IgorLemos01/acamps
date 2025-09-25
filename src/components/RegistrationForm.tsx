@@ -148,43 +148,18 @@ const RegistrationForm = () => {
                   
                   <div className="space-y-4">
                     <div>
-                      <Label className="text-white font-semibold">Já participou de algum ACAMP'S?</Label>
-                      <Select value={formData.participou} onValueChange={value => handleInputChange('participou', value)}>
-                        <SelectTrigger className="mt-2 border-2 border-secondary/30 focus:border-secondary bg-white/90 text-primary rounded-xl">
-                          <SelectValue placeholder="Selecione" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="Sim">Sim</SelectItem>
-                          <SelectItem value="Não">Não</SelectItem>
-                        </SelectContent>
-                      </Select>
+                      <Label htmlFor="participou" className="text-white font-semibold">Já participou de algum ACAMP'S?</Label>
+                      <Input id="participou" value={formData.participou} onChange={e => handleInputChange('participou', e.target.value)} placeholder="Digite sua resposta" className="mt-2 border-2 border-secondary/30 focus:border-secondary focus:ring-2 focus:ring-secondary/20 bg-white/90 text-primary rounded-xl transition-all duration-300" />
                     </div>
                     
                     <div>
-                      <Label className="text-white font-semibold">Você é vegano ou vegetariano?</Label>
-                      <Select value={formData.vegano} onValueChange={value => handleInputChange('vegano', value)}>
-                        <SelectTrigger className="mt-2 border-2 border-secondary/30 focus:border-secondary bg-white/90 text-primary rounded-xl">
-                          <SelectValue placeholder="Selecione" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="Sou vegano">Sou vegano</SelectItem>
-                          <SelectItem value="Sou vegetariano">Sou vegetariano</SelectItem>
-                          <SelectItem value="Não sou">Não sou</SelectItem>
-                        </SelectContent>
-                      </Select>
+                      <Label htmlFor="vegano" className="text-white font-semibold">Você é vegano ou vegetariano?</Label>
+                      <Input id="vegano" value={formData.vegano} onChange={e => handleInputChange('vegano', e.target.value)} placeholder="Digite sua resposta" className="mt-2 border-2 border-secondary/30 focus:border-secondary focus:ring-2 focus:ring-secondary/20 bg-white/90 text-primary rounded-xl transition-all duration-300" />
                     </div>
                     
                     <div>
-                      <Label className="text-white font-semibold">Você possui intolerância à lactose?</Label>
-                      <Select value={formData.intolerancia} onValueChange={value => handleInputChange('intolerancia', value)}>
-                        <SelectTrigger className="mt-2 border-2 border-secondary/30 focus:border-secondary bg-white/90 text-primary rounded-xl">
-                          <SelectValue placeholder="Selecione" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="Sim">Sim</SelectItem>
-                          <SelectItem value="Não">Não</SelectItem>
-                        </SelectContent>
-                      </Select>
+                      <Label htmlFor="intolerancia" className="text-white font-semibold">Você possui intolerância à lactose?</Label>
+                      <Input id="intolerancia" value={formData.intolerancia} onChange={e => handleInputChange('intolerancia', e.target.value)} placeholder="Digite sua resposta" className="mt-2 border-2 border-secondary/30 focus:border-secondary focus:ring-2 focus:ring-secondary/20 bg-white/90 text-primary rounded-xl transition-all duration-300" />
                     </div>
                     
                     <div>
@@ -240,55 +215,23 @@ const RegistrationForm = () => {
                   
                   <div className="space-y-4">
                     <div>
-                      <Label className="text-white font-semibold">É batizado na Igreja Católica?</Label>
-                      <Select value={formData.batizado} onValueChange={value => handleInputChange('batizado', value)}>
-                        <SelectTrigger className="mt-2 border-2 border-secondary/30 focus:border-secondary bg-white/90 text-primary rounded-xl">
-                          <SelectValue placeholder="Selecione" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="Sim">Sim</SelectItem>
-                          <SelectItem value="Não">Não</SelectItem>
-                        </SelectContent>
-                      </Select>
+                      <Label htmlFor="batizado" className="text-white font-semibold">É batizado na Igreja Católica?</Label>
+                      <Input id="batizado" value={formData.batizado} onChange={e => handleInputChange('batizado', e.target.value)} placeholder="Digite sua resposta" className="mt-2 border-2 border-secondary/30 focus:border-secondary focus:ring-2 focus:ring-secondary/20 bg-white/90 text-primary rounded-xl transition-all duration-300" />
                     </div>
                     
                     <div>
-                      <Label className="text-white font-semibold">Já recebeu a primeira Eucaristia?</Label>
-                      <Select value={formData.eucaristia} onValueChange={value => handleInputChange('eucaristia', value)}>
-                        <SelectTrigger className="mt-2 border-2 border-secondary/30 focus:border-secondary bg-white/90 text-primary rounded-xl">
-                          <SelectValue placeholder="Selecione" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="Sim">Sim</SelectItem>
-                          <SelectItem value="Não">Não</SelectItem>
-                        </SelectContent>
-                      </Select>
+                      <Label htmlFor="eucaristia" className="text-white font-semibold">Já recebeu a primeira Eucaristia?</Label>
+                      <Input id="eucaristia" value={formData.eucaristia} onChange={e => handleInputChange('eucaristia', e.target.value)} placeholder="Digite sua resposta" className="mt-2 border-2 border-secondary/30 focus:border-secondary focus:ring-2 focus:ring-secondary/20 bg-white/90 text-primary rounded-xl transition-all duration-300" />
                     </div>
                     
                     <div>
-                      <Label className="text-white font-semibold">É Crismado?</Label>
-                      <Select value={formData.crismado} onValueChange={value => handleInputChange('crismado', value)}>
-                        <SelectTrigger className="mt-2 border-2 border-secondary/30 focus:border-secondary bg-white/90 text-primary rounded-xl">
-                          <SelectValue placeholder="Selecione" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="Sim">Sim</SelectItem>
-                          <SelectItem value="Não">Não</SelectItem>
-                        </SelectContent>
-                      </Select>
+                      <Label htmlFor="crismado" className="text-white font-semibold">É Crismado?</Label>
+                      <Input id="crismado" value={formData.crismado} onChange={e => handleInputChange('crismado', e.target.value)} placeholder="Digite sua resposta" className="mt-2 border-2 border-secondary/30 focus:border-secondary focus:ring-2 focus:ring-secondary/20 bg-white/90 text-primary rounded-xl transition-all duration-300" />
                     </div>
                     
                     <div>
-                      <Label className="text-white font-semibold">Vai levar barraca?</Label>
-                      <Select value={formData.barraca} onValueChange={value => handleInputChange('barraca', value)}>
-                        <SelectTrigger className="mt-2 border-2 border-secondary/30 focus:border-secondary bg-white/90 text-primary rounded-xl">
-                          <SelectValue placeholder="Selecione" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="Sim">Sim</SelectItem>
-                          <SelectItem value="Não">Não</SelectItem>
-                        </SelectContent>
-                      </Select>
+                      <Label htmlFor="barraca" className="text-white font-semibold">Vai levar barraca?</Label>
+                      <Input id="barraca" value={formData.barraca} onChange={e => handleInputChange('barraca', e.target.value)} placeholder="Digite sua resposta" className="mt-2 border-2 border-secondary/30 focus:border-secondary focus:ring-2 focus:ring-secondary/20 bg-white/90 text-primary rounded-xl transition-all duration-300" />
                     </div>
                   </div>
                   
