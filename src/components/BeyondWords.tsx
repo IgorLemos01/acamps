@@ -27,11 +27,7 @@ const BeyondWords = () => {
                 IMPOSSÍVEL DESCREVER
               </h3>
               
-              <p className="text-lg md:text-xl text-card-foreground/80 leading-relaxed">
-                Há mais de 30 anos transformando vidas através de uma experiência única 
-                que conecta jovens com propósito, fé e comunidade. O ACAMP'S não é apenas 
-                um evento, é um marco na jornada de milhares de pessoas.
-              </p>
+              <p className="text-lg md:text-xl text-card-foreground/80 leading-relaxed">Há mais de 30 anos transformando vidas através de uma experiência única com o amor de Deus que realmente é IMPOSSÍVEL DESCREVER. O ACAMP'S não é apenas um evento, é o começo da mudança da sua vida.</p>
               
               <div className="grid md:grid-cols-3 gap-6 mt-12">
                 <Card className="p-6 bg-primary text-primary-foreground">
