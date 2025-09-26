@@ -49,7 +49,7 @@ const Testimonials = () => {
                     <Quote className="absolute top-6 left-6 w-12 h-12 text-primary/30 group-hover:text-primary/50 transition-colors duration-300" />
                     
                     <div className="relative text-center">
-                      <p className="text-lg md:text-xl leading-relaxed mb-8 italic text-muted-foreground px-8">
+                      <p className="text-lg md:text-xl leading-relaxed mb-8 italic text-foreground px-8">
                         "{testimonial.id === 1 ? (
                           <>Minha <span className="text-primary font-semibold">melhor decisão</span>, enquanto participante do ACAMP'S de 2022, foi estar com a mente aberta, permitindo viver todas as oportunidades oferecidas: fazer amigos, aproveitar a gincana e, principalmente, ter uma <span className="text-accent font-semibold">verdadeira experiência com Deus</span>. É preciso ter <span className="text-primary font-semibold">coragem</span> para abrir o coração, para se deixar preencher por essa <span className="text-accent font-semibold">misericórdia divina</span>, para renunciar ao que for necessário pelo Senhor. Entre muitas angústias, pedi essa coragem. Hoje, apenas retribuo o que me foi dado – acreditando, servindo, intercedendo e zelando pelas almas que me são confiadas –, e vivo a <span className="text-primary font-semibold">alegria de um amor que transborda</span>!</>
                         ) : testimonial.id === 2 ? (
