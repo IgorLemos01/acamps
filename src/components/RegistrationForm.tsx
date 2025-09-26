@@ -250,8 +250,8 @@ const RegistrationForm = () => {
                     </p>
                     
                     <div className="space-y-2">
-                      <a href="https://drive.google.com/file/d/10aMk__k4RtAd8buV5s9O6eIQmq1qQsth/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="block text-secondary hover:text-accent hover:underline font-semibold transition-colors duration-300">
-                        👉 Baixar Termo de Compromisso
+                      <a href="/docs/termos-aceitacao-condicoes-uso.pdf" target="_blank" rel="noopener noreferrer" className="block text-secondary hover:text-accent hover:underline font-semibold transition-colors duration-300">
+                        👉 Baixar Termo de Aceitação e Condições de Uso
                       </a>
                       <a href="https://drive.google.com/file/d/1b4HH9Suf-UmoFYP4UrFWV40pKvYv5bAe/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="block text-secondary hover:text-accent hover:underline font-semibold transition-colors duration-300">
                         👉 Termo de Imagem - Menores
