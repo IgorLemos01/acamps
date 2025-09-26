@@ -1,24 +1,21 @@
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import beyondWordsImage from '@/assets/beyond-words.jpg';
-
 const BeyondWords = () => {
-  return (
-    <section className="py-20 bg-secondary relative overflow-hidden">
+  return <section className="py-20 bg-secondary relative overflow-hidden">
       {/* Background Image with Overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
-        style={{ backgroundImage: `url(${beyondWordsImage})` }}
-      >
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20" style={{
+      backgroundImage: `url(${beyondWordsImage})`
+    }}>
         <div className="absolute inset-0 bg-gradient-primary opacity-60"></div>
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="font-brand text-4xl md:text-6xl text-foreground mb-4 animate-fade-in">
+          <h2 className="font-brand text-4xl mb-4 animate-fade-in text-[#004466] font-bold md:text-7xl">
             Beyond Words
           </h2>
-          <p className="text-xl text-foreground/90 max-w-2xl mx-auto animate-slide-up">
+          <p className="text-xl max-w-2xl mx-auto animate-slide-up text-[#02064c] font-bold">
             Uma experiência que vai além das palavras desde 1989
           </p>
         </div>
@@ -60,11 +57,7 @@ const BeyondWords = () => {
               </div>
               
               <div className="pt-8">
-                <Button 
-                  size="lg" 
-                  className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold text-lg px-12 py-4 rounded-full shadow-glow transition-all duration-300 hover:scale-105"
-                  onClick={() => window.location.href = '/inscricao'}
-                >
+                <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold text-lg px-12 py-4 rounded-full shadow-glow transition-all duration-300 hover:scale-105" onClick={() => window.location.href = '/inscricao'}>
                   Viva Esta Experiência
                 </Button>
               </div>
@@ -72,8 +65,6 @@ const BeyondWords = () => {
           </Card>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default BeyondWords;
