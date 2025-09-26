@@ -207,9 +207,9 @@ TERMO: Aceito`
               <div className="grid md:grid-cols-3 gap-6 mb-8">
                 <Card className="p-6 text-center hover:shadow-md transition-shadow">
                   <FileText className="w-8 h-8 text-primary mx-auto mb-3" />
-                  <h3 className="font-semibold mb-3">Termo Geral</h3>
+                  <h3 className="font-semibold mb-3">Termos e Condições</h3>
                   <a
-                    href="https://drive.google.com/file/d/10aMk__k4RtAd8buV5s9O6eIQmq1qQsth/view?usp=sharing"
+                    href="/docs/termos-aceitacao-condicoes-uso.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-primary hover:text-secondary transition-colors"
@@ -221,9 +221,9 @@ TERMO: Aceito`
 
                 <Card className="p-6 text-center hover:shadow-md transition-shadow">
                   <FileText className="w-8 h-8 text-accent mx-auto mb-3" />
-                  <h3 className="font-semibold mb-3">Termo para Menores</h3>
+                  <h3 className="font-semibold mb-3">Termo Imagem (Menores)</h3>
                   <a
-                    href="https://drive.google.com/file/d/1b4HH9Suf-UmoFYP4UrFWV40pKvYv5bAe/view?usp=sharing"
+                    href="/docs/termo-imagem-menor.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-primary hover:text-secondary transition-colors"
@@ -235,9 +235,9 @@ TERMO: Aceito`
 
                 <Card className="p-6 text-center hover:shadow-md transition-shadow">
                   <FileText className="w-8 h-8 text-secondary mx-auto mb-3" />
-                  <h3 className="font-semibold mb-3">Termo para Maiores</h3>
+                  <h3 className="font-semibold mb-3">Termo Imagem (Maiores)</h3>
                   <a
-                    href="https://drive.google.com/file/d/1sEItoaYqA1-RwdGfQEEp5Vq8ulU0i6ps/view?usp=sharing"
+                    href="/docs/termo-imagem-maior.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-primary hover:text-secondary transition-colors"

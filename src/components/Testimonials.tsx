@@ -3,25 +3,16 @@ import { Star, Quote } from 'lucide-react';
 import { useState, useEffect } from 'react';
 const testimonials = [{
   id: 1,
-  name: 'João Silva',
-  role: 'Aventureiro',
-  content: 'O ACAMP\'S foi incrível! Produtos de qualidade excepcional e uma experiência inesquecível na natureza.',
-  rating: 5,
-  location: 'São Paulo, SP'
+  name: 'Samara Waleska',
+  content: 'Minha melhor decisão, enquanto participante do ACAMP\'S de 2022, foi estar com a mente aberta, permitindo viver todas as oportunidades oferecidas: fazer amigos, aproveitar a gincana e, principalmente, ter uma verdadeira experiência com Deus. É preciso ter coragem para abrir o coração, para se deixar preencher por essa misericórdia divina, para renunciar ao que for necessário pelo Senhor. Entre muitas angústias, pedi essa coragem. Hoje, apenas retribuo o que me foi dado – acreditando, servindo, intercedendo e zelando pelas almas que me são confiadas –, e vivo a alegria de um amor que transborda!'
 }, {
   id: 2,
-  name: 'Maria Santos',
-  role: 'Trilheira',
-  content: 'Melhor evento de camping que já participei. A organização é perfeita e os produtos são top de linha.',
-  rating: 5,
-  location: 'Rio de Janeiro, RJ'
+  name: 'Adria Andrade',
+  content: 'Vou começar dizendo o que todo mundo fala, é impossível descrever. Quando eu cheguei lá imaginei que seria só mais um fim de semana, não imaginava que eu ia encontrar o que eu nem sabia que tava faltando na minha vida. Deus nos surpreende todos os dias, mas naquele final de semana específico eu fiquei encantada, encantada com o amor de Deus, encantada com o bem que ele me faz, encantada com o quanto ele fez falta na minha vida, e saí de lá com a certeza de que era assim que eu queria me sentir daqui pra frente, com a certeza de que eu nunca vou estar sozinha e de que eu tinha que retribuir como eu posso, tudo que ele fez e faz por mim, nesse fim de semana ele me deu pessoas e aprendizados que eu vou levar pra vida toda, e agora eu só penso em servi-lo e me entregar inteiramente a ele. Não vejo a hora de poder ajudar a outros jovens a vivenciar essa experiência incrível.'
 }, {
   id: 3,
-  name: 'Pedro Costa',
-  role: 'Campista',
-  content: 'Recomendo para todos os amantes da natureza. O ACAMP\'S supera todas as expectativas!',
-  rating: 5,
-  location: 'Belo Horizonte, MG'
+  name: 'Maya Cesar',
+  content: 'Ao ser convidada para ir ao Acamps, não tinha muita esperança. Passava por processos difíceis em minha vida e não via sentido nela. Porém, com a insistência de uma amiga que desejava acima de tudo salvar minha alma, decidi ir. E definitivamente é impossível descrever. O Acamps mudou minha vida. Senti uma felicidade que nunca havia experimentado antes. Nele, encontrei o sentido de viver e, mesmo sem entender muito bem, já sentia a felicidade de ser toda Dele. Os vazios que eu tanto tentei preencher com o mundo transbordavam de amor esponsal. A partir daí, encontrei uma verdadeira família. E mesmo após quase três anos da minha experiência com Deus no Acamps, ainda sinto meu coração arder só de pensar nele. O Acamps não só transformou a minha vida, mas devolveu o sentido de tê-la.'
 }];
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -31,50 +22,35 @@ const Testimonials = () => {
     }, 5000);
     return () => clearInterval(timer);
   }, []);
-  return <section id="testemunhos" className="py-20 bg-card">
+  return <section id="testemunhos" className="py-20 bg-secondary/5">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="font-brand text-4xl md:text-6xl text-card-foreground mb-4 animate-fade-in">testemunhos do acamp´s</h2>
+          <h2 className="font-brand text-4xl md:text-6xl text-foreground mb-4 animate-fade-in">testemunhos do acamp´s</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto animate-slide-up">
             Experiências reais de quem já viveu a aventura ACAMP'S
           </p>
         </div>
         
-        <div className="max-w-4xl mx-auto">
-          <div className="relative overflow-hidden">
-            <div className="flex transition-transform duration-500 ease-in-out" style={{
-            transform: `translateX(-${currentIndex * 100}%)`
-          }}>
-              {testimonials.map(testimonial => <div key={testimonial.id} className="w-full flex-shrink-0 px-4">
-                  <Card className="p-8 bg-gradient-brand text-foreground shadow-brand relative">
-                    <Quote className="absolute top-4 left-4 w-8 h-8 text-secondary opacity-50" />
-                    
-                    <div className="text-center">
-                      <div className="flex justify-center mb-4">
-                        {[...Array(testimonial.rating)].map((_, i) => <Star key={i} className="w-6 h-6 text-secondary fill-current" />)}
-                      </div>
-                      
-                      <p className="text-xl leading-relaxed mb-6 italic">
-                        "{testimonial.content}"
-                      </p>
-                      
-                      <div>
-                        <h4 className="text-2xl font-bold text-secondary mb-1">
-                          {testimonial.name}
-                        </h4>
-                        <p className="text-foreground/80">
-                          {testimonial.role} • {testimonial.location}
-                        </p>
-                      </div>
-                    </div>
-                  </Card>
-                </div>)}
-            </div>
-          </div>
-          
-          {/* Indicators */}
-          <div className="flex justify-center mt-8 space-x-2">
-            {testimonials.map((_, index) => <button key={index} onClick={() => setCurrentIndex(index)} className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentIndex ? 'bg-accent scale-125' : 'bg-muted hover:bg-accent/50'}`} />)}
+        <div className="max-w-6xl mx-auto">
+          {/* Layout responsivo: grid em telas grandes, stack em telas pequenas */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {testimonials.map(testimonial => (
+              <Card key={testimonial.id} className="p-8 bg-card text-card-foreground shadow-brand relative hover:shadow-glow transition-all duration-300">
+                <Quote className="absolute top-4 left-4 w-8 h-8 text-primary opacity-30" />
+                
+                <div className="text-center">
+                  <p className="text-lg leading-relaxed mb-6 italic text-muted-foreground">
+                    "{testimonial.content}"
+                  </p>
+                  
+                  <div>
+                    <h4 className="text-xl font-bold text-primary">
+                      — {testimonial.name}
+                    </h4>
+                  </div>
+                </div>
+              </Card>
+            ))}
           </div>
         </div>
       </div>
