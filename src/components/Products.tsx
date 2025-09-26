@@ -1,6 +1,9 @@
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ShoppingCart } from 'lucide-react';
+import melhoresFeriasImage from '@/assets/melhores-ferias.jpg';
+import beyondWordsImage from '@/assets/beyond-words.jpg';
+import acampBannerImage from '@/assets/acamp-banner.jpg';
 
 const products = [{
   id: 1,
@@ -33,10 +36,18 @@ const Products = () => {
               animationDelay: `${index * 0.2}s`
             }}>
               <div className="relative overflow-hidden">
-                <div className="w-full h-64 bg-muted flex items-center justify-center">
-                  <div className="text-center">
+                <div 
+                  className="w-full h-64 bg-cover bg-center bg-no-repeat flex items-center justify-center relative"
+                  style={{ 
+                    backgroundImage: index === 0 ? `url(${melhoresFeriasImage})` : 
+                                    index === 1 ? `url(${beyondWordsImage})` :
+                                    `url(${acampBannerImage})`
+                  }}
+                >
+                  <div className="absolute inset-0 bg-background/60"></div>
+                  <div className="text-center relative z-10">
                     <div className="text-4xl mb-2">⏳</div>
-                    <div className="text-lg font-semibold text-muted-foreground">Aguarde...</div>
+                    <div className="text-lg font-semibold text-foreground">Aguarde...</div>
                   </div>
                 </div>
                 <div className="absolute inset-0 bg-gradient-brand opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>

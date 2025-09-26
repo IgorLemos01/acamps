@@ -1,5 +1,6 @@
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
+import BeyondWords from '@/components/BeyondWords';
 import EventLocation from '@/components/EventLocation';
 import Products from '@/components/Products';
 import YouTubeVideo from '@/components/YouTubeVideo';
@@ -12,6 +13,7 @@ const Index = () => {
     <div className="min-h-screen">
       <Header />
       <Hero />
+      <BeyondWords />
       <EventLocation />
       <Products />
       <YouTubeVideo />

@@ -8,43 +8,43 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* ACAMP'S Brand Colors */
-    --background: 161 100% 31%; /* Verde esmeralda fundo */
+    /* ACAMP'S Official Brand Colors */
+    --background: 196 100% 40%; /* Azul claro principal */
     --foreground: 0 0% 100%; /* Branco */
 
-    --card: 0 0% 100%;
-    --card-foreground: 150 100% 24%; /* Verde escuro */
+    --card: 0 0% 100%; /* Branco */
+    --card-foreground: 200 100% 20%; /* Azul escuro */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 150 100% 24%;
+    --popover: 0 0% 100%; /* Branco */
+    --popover-foreground: 200 100% 20%; /* Azul escuro */
 
-    --primary: 150 100% 24%; /* Verde escuro principal */
-    --primary-foreground: 0 0% 100%;
+    --primary: 200 100% 20%; /* Azul escuro principal */
+    --primary-foreground: 0 0% 100%; /* Branco */
 
-    --secondary: 87 76% 55%; /* Verde claro */
-    --secondary-foreground: 150 100% 24%;
+    --secondary: 0 0% 95%; /* Cinza claro */
+    --secondary-foreground: 0 0% 0%; /* Preto */
 
-    --muted: 161 100% 31%;
-    --muted-foreground: 0 0% 100%;
+    --muted: 0 0% 95%; /* Cinza claro */
+    --muted-foreground: 0 0% 0%; /* Preto */
 
-    --accent: 20 100% 55%; /* Laranja */
-    --accent-foreground: 0 0% 100%;
+    --accent: 48 100% 50%; /* Amarelo ACAMP'S */
+    --accent-foreground: 0 0% 0%; /* Preto */
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 150 100% 24%;
-    --input: 0 0% 100%;
-    --ring: 20 100% 55%;
+    --border: 48 100% 50%; /* Amarelo para bordas */
+    --input: 0 0% 100%; /* Branco */
+    --ring: 48 100% 50%; /* Amarelo */
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(150 100% 24%), hsl(161 100% 31%));
-    --gradient-secondary: linear-gradient(135deg, hsl(87 76% 55%), hsl(20 100% 55%));
-    --gradient-hero: linear-gradient(135deg, hsl(161 100% 31%), hsl(150 100% 24%));
+    --gradient-primary: linear-gradient(135deg, hsl(196 100% 40%), hsl(200 100% 20%));
+    --gradient-secondary: linear-gradient(135deg, hsl(48 100% 50%), hsl(196 100% 40%));
+    --gradient-hero: linear-gradient(135deg, hsl(200 100% 20%), hsl(196 100% 40%));
     
     /* Shadows */
-    --shadow-brand: 0 10px 30px -10px hsl(150 100% 24% / 0.3);
-    --shadow-glow: 0 0 40px hsl(87 76% 55% / 0.4);
+    --shadow-brand: 0 10px 30px -10px hsl(200 100% 20% / 0.3);
+    --shadow-glow: 0 0 40px hsl(48 100% 50% / 0.4);
     
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -69,24 +69,24 @@ All colors MUST be HSL.
   }
 
   .dark {
-    /* Dark mode mantém as mesmas cores brand */
-    --background: 150 100% 10%;
-    --foreground: 0 0% 100%;
+    /* Dark mode com cores ACAMP'S ajustadas */
+    --background: 200 100% 15%; /* Azul escuro mais escuro */
+    --foreground: 0 0% 100%; /* Branco */
     
-    --card: 150 100% 15%;
-    --card-foreground: 0 0% 100%;
+    --card: 200 100% 20%; /* Azul escuro */
+    --card-foreground: 0 0% 100%; /* Branco */
     
-    --primary: 87 76% 55%;
-    --primary-foreground: 150 100% 24%;
+    --primary: 48 100% 50%; /* Amarelo */
+    --primary-foreground: 0 0% 0%; /* Preto */
     
-    --secondary: 150 100% 24%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 0 0% 20%; /* Cinza escuro */
+    --secondary-foreground: 0 0% 100%; /* Branco */
     
-    --accent: 20 100% 55%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 48 100% 50%; /* Amarelo */
+    --accent-foreground: 0 0% 0%; /* Preto */
     
-    --border: 150 100% 20%;
-    --input: 150 100% 20%;
+    --border: 48 100% 50%; /* Amarelo */
+    --input: 200 100% 25%; /* Azul escuro mais claro */
   }
 }
 
