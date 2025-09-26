@@ -22,7 +22,7 @@ const Testimonials = () => {
     }, 5000);
     return () => clearInterval(timer);
   }, []);
-  return <section id="testemunhos" className="py-20 bg-secondary/5">
+  return <section id="testemunhos" className="py-20 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/10">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="font-brand text-4xl md:text-6xl text-foreground mb-4 animate-fade-in">testemunhos do acamp´s</h2>
@@ -31,25 +31,58 @@ const Testimonials = () => {
           </p>
         </div>
         
-        <div className="max-w-6xl mx-auto">
-          {/* Layout responsivo: grid em telas grandes, stack em telas pequenas */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {testimonials.map(testimonial => (
-              <Card key={testimonial.id} className="p-8 bg-card text-card-foreground shadow-brand relative hover:shadow-glow transition-all duration-300">
-                <Quote className="absolute top-4 left-4 w-8 h-8 text-primary opacity-30" />
-                
-                <div className="text-center">
-                  <p className="text-lg leading-relaxed mb-6 italic text-muted-foreground">
-                    "{testimonial.content}"
-                  </p>
-                  
-                  <div>
-                    <h4 className="text-xl font-bold text-primary">
-                      — {testimonial.name}
-                    </h4>
-                  </div>
+        <div className="max-w-5xl mx-auto">
+          <div className="relative overflow-hidden rounded-2xl">
+            <div 
+              className="flex transition-all duration-700 ease-in-out" 
+              style={{
+                transform: `translateX(-${currentIndex * 100}%)`
+              }}
+            >
+              {testimonials.map(testimonial => (
+                <div key={testimonial.id} className="w-full flex-shrink-0 px-4">
+                  <Card className="mx-auto max-w-4xl p-10 bg-gradient-to-br from-card to-card/80 backdrop-blur-sm border-primary/20 shadow-2xl relative overflow-hidden group hover:shadow-brand transition-all duration-500">
+                    {/* Background decorative elements */}
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-transparent rounded-full -translate-y-16 translate-x-16"></div>
+                    <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-accent/10 to-transparent rounded-full translate-y-12 -translate-x-12"></div>
+                    
+                    <Quote className="absolute top-6 left-6 w-12 h-12 text-primary/30 group-hover:text-primary/50 transition-colors duration-300" />
+                    
+                    <div className="relative text-center">
+                      <p className="text-lg md:text-xl leading-relaxed mb-8 italic text-muted-foreground px-8">
+                        "{testimonial.content}"
+                      </p>
+                      
+                      <div className="flex items-center justify-center">
+                        <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent mr-4"></div>
+                        <h4 className="text-xl md:text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                          {testimonial.name}
+                        </h4>
+                        <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent ml-4"></div>
+                      </div>
+                    </div>
+                  </Card>
                 </div>
-              </Card>
+              ))}
+            </div>
+          </div>
+          
+          {/* Modern indicators */}
+          <div className="flex justify-center mt-8 space-x-3">
+            {testimonials.map((_, index) => (
+              <button 
+                key={index}
+                onClick={() => setCurrentIndex(index)} 
+                className={`relative overflow-hidden rounded-full transition-all duration-300 ${
+                  index === currentIndex 
+                    ? 'w-12 h-3 bg-primary shadow-glow' 
+                    : 'w-3 h-3 bg-muted hover:bg-primary/50'
+                }`}
+              >
+                {index === currentIndex && (
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-full animate-pulse"></div>
+                )}
+              </button>
             ))}
           </div>
         </div>
