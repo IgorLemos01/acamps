@@ -55,68 +55,33 @@ const InscricaoTermo = () => {
     setIsLoading(true);
 
     try {
-      // IMPORTANTE: Para usar este formulário, você precisa:
-      // 1. Criar uma conta gratuita em https://formspree.io/
-      // 2. Criar um novo formulário
-      // 3. Substituir 'YOUR_FORM_ID' pelo ID do seu formulário
-      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      // Enviar para Google Apps Script
+      const formData = new FormData();
+      Object.entries(allData).forEach(([key, value]) => {
+        formData.append(key, String(value));
+      });
+      formData.append('termoAceito', 'true');
+
+      await fetch('https://script.google.com/macros/s/AKfycbwockEsTLCwhpBCs3aVf0l9oeMTTJEuongY-EVS8Qc_08UJP1HDeawHbbhsS63MQGQlGg/exec', {
         method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...allData,
-          termoAceito: true,
-          subject: 'Nova Inscrição Completa ACAMP\'S',
-          message: `Nova inscrição completa recebida para o ACAMP'S:
-          
-DADOS PESSOAIS:
-Nome: ${allData.fullName}
-Email: ${allData.email}
-Telefone: ${allData.phone}
-Idade: ${allData.age}
-CPF: ${allData.cpf}
-RG: ${allData.rg}
-
-INFORMAÇÕES DE SAÚDE:
-Já participou de ACAMP'S: ${allData.jaParticipou}
-Dieta: ${allData.dieta}
-Intolerância à lactose: ${allData.intoleranciaLactose}
-Alergia a medicamento: ${allData.alergiaMedicamento || 'Não informado'}
-Medicamento contínuo: ${allData.medicamentoContinuo || 'Não informado'}
-Comorbidade: ${allData.comorbidade || 'Não informado'}
-
-CONTATO DE EMERGÊNCIA:
-Nome: ${allData.contatoEmergenciaNome}
-Telefone: ${allData.contatoEmergenciaTelefone}
-Parentesco: ${allData.grauParentesco}
-
-INFORMAÇÕES RELIGIOSAS:
-Batizado: ${allData.batizadoCatolico}
-Primeira Eucaristia: ${allData.primeiraEucaristia}
-Crismado: ${allData.crismado}
-
-ACAMPAMENTO:
-Vai levar barraca: ${allData.levaBarraca}
-
-TERMO: Aceito`
-        }),
+        mode: 'no-cors',
+        body: formData,
       });
 
-      if (response.ok) {
-        setIsSuccess(true);
-        // Limpar dados do sessionStorage
-        sessionStorage.removeItem('inscricaoData');
-        sessionStorage.removeItem('inscricaoSaudeData');
-        
-        toast({
-          title: "Inscrição finalizada com sucesso!",
-          description: "Agora confirme sua participação pelo WhatsApp.",
-        });
-      } else {
-        throw new Error('Erro ao enviar formulário');
-      }
+      setIsSuccess(true);
+      // Limpar dados do sessionStorage
+      sessionStorage.removeItem('inscricaoData');
+      sessionStorage.removeItem('inscricaoSaudeData');
+      
+      toast({
+        title: "Inscrição finalizada com sucesso!",
+        description: "Redirecionando para pagamento...",
+      });
+
+      // Redirecionar baseado na modalidade
+      setTimeout(() => {
+        navigate('/pagamento', { state: { modalidade: allData.modalidade } });
+      }, 1500);
     } catch (error) {
       toast({
         title: "Erro ao finalizar inscrição",
