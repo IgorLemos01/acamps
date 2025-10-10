@@ -24,8 +24,7 @@ const InscricaoSaude = () => {
     batizadoCatolico: '',
     primeiraEucaristia: '',
     crismado: '',
-    levaBarraca: '',
-    modalidade: ''
+    levaBarraca: ''
   });
 
   useEffect(() => {
@@ -337,31 +336,11 @@ const InscricaoSaude = () => {
                       </div>
                     </RadioGroup>
                   </div>
-
-                  <div className="space-y-4">
-                    <Label className="text-card-foreground font-semibold">
-                      Qual é a sua modalidade? *
-                    </Label>
-                    <RadioGroup
-                      value={formData.modalidade}
-                      onValueChange={(value) => handleRadioChange('modalidade', value)}
-                      className="flex gap-6"
-                    >
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="Participante" id="modalidade-participante" />
-                        <Label htmlFor="modalidade-participante">Participante</Label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="Servo" id="modalidade-servo" />
-                        <Label htmlFor="modalidade-servo">Servo</Label>
-                      </div>
-                    </RadioGroup>
-                  </div>
                 </div>
 
                 <Button
                   type="submit"
-                  disabled={!formData.jaParticipou || !formData.dieta || !formData.intoleranciaLactose || !formData.contatoEmergenciaNome || !formData.contatoEmergenciaTelefone || !formData.grauParentesco || !formData.batizadoCatolico || !formData.primeiraEucaristia || !formData.crismado || !formData.levaBarraca || !formData.modalidade}
+                  disabled={!formData.jaParticipou || !formData.dieta || !formData.intoleranciaLactose || !formData.contatoEmergenciaNome || !formData.contatoEmergenciaTelefone || !formData.grauParentesco || !formData.batizadoCatolico || !formData.primeiraEucaristia || !formData.crismado || !formData.levaBarraca}
                   className="w-full bg-gradient-brand hover:bg-gradient-secondary text-foreground font-bold py-4 text-lg shadow-brand transition-all duration-300 hover:shadow-glow hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Avançar

@@ -5,6 +5,7 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useToast } from '@/hooks/use-toast';
 import Header from '@/components/Header';
 
@@ -14,6 +15,7 @@ const InscricaoTermo = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [termoAceito, setTermoAceito] = useState(false);
+  const [modalidade, setModalidade] = useState('');
   const [allData, setAllData] = useState<any>({});
 
   useEffect(() => {
@@ -52,6 +54,15 @@ const InscricaoTermo = () => {
       return;
     }
 
+    if (!modalidade) {
+      toast({
+        title: "Campo obrigatório",
+        description: "Você deve selecionar sua modalidade (Participante ou Servo).",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsLoading(true);
 
     try {
@@ -61,6 +72,7 @@ const InscricaoTermo = () => {
         formData.append(key, String(value));
       });
       formData.append('termoAceito', 'true');
+      formData.append('modalidade', modalidade);
 
       await fetch('https://script.google.com/macros/s/AKfycbwockEsTLCwhpBCs3aVf0l9oeMTTJEuongY-EVS8Qc_08UJP1HDeawHbbhsS63MQGQlGg/exec', {
         method: 'POST',
@@ -80,7 +92,7 @@ const InscricaoTermo = () => {
 
       // Redirecionar baseado na modalidade
       setTimeout(() => {
-        navigate('/pagamento', { state: { modalidade: allData.modalidade } });
+        navigate('/pagamento', { state: { modalidade } });
       }, 1500);
     } catch (error) {
       toast({
@@ -214,6 +226,27 @@ const InscricaoTermo = () => {
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Pergunta de Modalidade */}
+                <div className="p-6 bg-primary/10 rounded-lg border border-primary/20">
+                  <Label className="text-card-foreground font-semibold text-lg mb-4 block">
+                    Você irá para o Acamp's como participante ou servo? *
+                  </Label>
+                  <RadioGroup
+                    value={modalidade}
+                    onValueChange={(value) => setModalidade(value)}
+                    className="flex gap-6"
+                  >
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="Participante" id="modalidade-participante" />
+                      <Label htmlFor="modalidade-participante" className="cursor-pointer">Participante</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="Servo" id="modalidade-servo" />
+                      <Label htmlFor="modalidade-servo" className="cursor-pointer">Servo</Label>
+                    </div>
+                  </RadioGroup>
+                </div>
+
                 {/* Checkbox obrigatório */}
                 <div className="flex items-start space-x-3 p-4 bg-secondary/10 rounded-lg border border-secondary/20">
                   <Checkbox
@@ -230,7 +263,7 @@ const InscricaoTermo = () => {
 
                 <Button
                   type="submit"
-                  disabled={isLoading || !termoAceito}
+                  disabled={isLoading || !termoAceito || !modalidade}
                   className="w-full bg-gradient-brand hover:bg-gradient-secondary text-foreground font-bold py-4 text-lg shadow-brand transition-all duration-300 hover:shadow-glow hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isLoading ? (
