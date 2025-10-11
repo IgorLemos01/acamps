@@ -32,7 +32,8 @@ const RegistrationForm = () => {
     batizado: '',
     eucaristia: '',
     crismado: '',
-    barraca: ''
+    barraca: '',
+    modalidade: ''
   });
   const handleInputChange = (name: string, value: string) => {
     setFormData(prev => ({
@@ -40,14 +41,17 @@ const RegistrationForm = () => {
       [name]: value
     }));
   };
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzjcWXAtx4TtOQcEge87K2ermTOaMQ2NWdyP4o22R1u1ggZvRP7s4SapRhR6eFFkITKqw/exec"; // troque pela sua URL
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzjcWXAtx4TtOQcEge87K2ermTOaMQ2NWdyP4o22R1u1ggZvRP7s4SapRhR6eFFkITKqw/exec";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
     try {
-      // Converter formData para URLSearchParams (application/x-www-form-urlencoded)
+      // Salvar dados no sessionStorage
+      sessionStorage.setItem('inscricaoData', JSON.stringify(formData));
+
+      // Converter formData para URLSearchParams
       const params = new URLSearchParams();
       Object.entries(formData).forEach(([key, value]) => {
         params.append(key, value);
@@ -55,21 +59,20 @@ const RegistrationForm = () => {
 
       const response = await fetch(SCRIPT_URL, {
         method: "POST",
-        mode: "no-cors", // IMPORTANTE para não dar erro CORS
+        mode: "no-cors",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
         body: params.toString(),
       });
 
-      // Como no-cors não retorna .ok, trate o sucesso direto
       toast({
-        title: "✅ Inscrição realizada!",
-        description: "Seus dados foram enviados com sucesso.",
+        title: "✅ Dados salvos!",
+        description: "Prossiga para finalizar a inscrição.",
       });
 
-      // Redirecionar para a página de pagamento
-      window.location.href = '/pagamento';
+      // Redirecionar para a página de termos
+      window.location.href = '/inscricao/termo';
     } catch (error) {
       toast({
         title: "❌ Erro ao enviar inscrição",
@@ -148,33 +151,33 @@ const RegistrationForm = () => {
                   
                   <div className="space-y-4">
                     <div>
-                      <Label htmlFor="participou" className="text-white font-semibold">Já participou de algum ACAMP'S?</Label>
-                      <Input id="participou" value={formData.participou} onChange={e => handleInputChange('participou', e.target.value)} placeholder="Digite sua resposta" className="mt-2 border-2 border-secondary/30 focus:border-secondary focus:ring-2 focus:ring-secondary/20 bg-white/90 text-black rounded-xl transition-all duration-300" />
+                      <Label htmlFor="participou" className="text-white font-semibold">Já participou de algum ACAMP'S? *</Label>
+                      <Input id="participou" value={formData.participou} onChange={e => handleInputChange('participou', e.target.value)} required placeholder="Digite sua resposta" className="mt-2 border-2 border-secondary/30 focus:border-secondary focus:ring-2 focus:ring-secondary/20 bg-white/90 text-black rounded-xl transition-all duration-300" />
                     </div>
                     
                     <div>
-                      <Label htmlFor="vegano" className="text-white font-semibold">Você é vegano ou vegetariano?</Label>
-                      <Input id="vegano" value={formData.vegano} onChange={e => handleInputChange('vegano', e.target.value)} placeholder="Digite sua resposta" className="mt-2 border-2 border-secondary/30 focus:border-secondary focus:ring-2 focus:ring-secondary/20 bg-white/90 text-black rounded-xl transition-all duration-300" />
+                      <Label htmlFor="vegano" className="text-white font-semibold">Você é vegano ou vegetariano? *</Label>
+                      <Input id="vegano" value={formData.vegano} onChange={e => handleInputChange('vegano', e.target.value)} required placeholder="Digite sua resposta" className="mt-2 border-2 border-secondary/30 focus:border-secondary focus:ring-2 focus:ring-secondary/20 bg-white/90 text-black rounded-xl transition-all duration-300" />
                     </div>
                     
                     <div>
-                      <Label htmlFor="intolerancia" className="text-white font-semibold">Você possui intolerância à lactose?</Label>
-                      <Input id="intolerancia" value={formData.intolerancia} onChange={e => handleInputChange('intolerancia', e.target.value)} placeholder="Digite sua resposta" className="mt-2 border-2 border-secondary/30 focus:border-secondary focus:ring-2 focus:ring-secondary/20 bg-white/90 text-black rounded-xl transition-all duration-300" />
+                      <Label htmlFor="intolerancia" className="text-white font-semibold">Você possui intolerância à lactose? *</Label>
+                      <Input id="intolerancia" value={formData.intolerancia} onChange={e => handleInputChange('intolerancia', e.target.value)} required placeholder="Digite sua resposta" className="mt-2 border-2 border-secondary/30 focus:border-secondary focus:ring-2 focus:ring-secondary/20 bg-white/90 text-black rounded-xl transition-all duration-300" />
                     </div>
                     
                     <div>
-                      <Label htmlFor="alergia" className="text-white font-semibold">Tem alergia a algum medicamento? Se sim, qual?</Label>
-                      <Input id="alergia" value={formData.alergia} onChange={e => handleInputChange('alergia', e.target.value)} placeholder="Ex: Dipirona" className="mt-2 border-2 border-secondary/30 focus:border-secondary focus:ring-2 focus:ring-secondary/20 bg-white/90 text-black rounded-xl transition-all duration-300" />
+                      <Label htmlFor="alergia" className="text-white font-semibold">Tem alergia a algum medicamento? Se sim, qual? *</Label>
+                      <Input id="alergia" value={formData.alergia} onChange={e => handleInputChange('alergia', e.target.value)} required placeholder="Ex: Dipirona" className="mt-2 border-2 border-secondary/30 focus:border-secondary focus:ring-2 focus:ring-secondary/20 bg-white/90 text-black rounded-xl transition-all duration-300" />
                     </div>
                     
                     <div>
-                      <Label htmlFor="medicamento" className="text-white font-semibold">Faz uso de algum medicamento contínuo? Se sim, qual?</Label>
-                      <Input id="medicamento" value={formData.medicamento} onChange={e => handleInputChange('medicamento', e.target.value)} placeholder="Ex: Losartana" className="mt-2 border-2 border-secondary/30 focus:border-secondary focus:ring-2 focus:ring-secondary/20 bg-white/90 text-black rounded-xl transition-all duration-300" />
+                      <Label htmlFor="medicamento" className="text-white font-semibold">Faz uso de algum medicamento contínuo? Se sim, qual? *</Label>
+                      <Input id="medicamento" value={formData.medicamento} onChange={e => handleInputChange('medicamento', e.target.value)} required placeholder="Ex: Losartana" className="mt-2 border-2 border-secondary/30 focus:border-secondary focus:ring-2 focus:ring-secondary/20 bg-white/90 text-black rounded-xl transition-all duration-300" />
                     </div>
                     
                     <div>
-                      <Label htmlFor="comorbidade" className="text-white font-semibold">Tem alguma comorbidade? (asma, diabetes, etc)</Label>
-                      <Input id="comorbidade" value={formData.comorbidade} onChange={e => handleInputChange('comorbidade', e.target.value)} placeholder="Descreva se houver" className="mt-2 border-2 border-secondary/30 focus:border-secondary focus:ring-2 focus:ring-secondary/20 bg-white/90 text-black rounded-xl transition-all duration-300" />
+                      <Label htmlFor="comorbidade" className="text-white font-semibold">Tem alguma comorbidade? (asma, diabetes, etc) *</Label>
+                      <Input id="comorbidade" value={formData.comorbidade} onChange={e => handleInputChange('comorbidade', e.target.value)} required placeholder="Descreva se houver" className="mt-2 border-2 border-secondary/30 focus:border-secondary focus:ring-2 focus:ring-secondary/20 bg-white/90 text-black rounded-xl transition-all duration-300" />
                     </div>
                   </div>
                   
@@ -215,23 +218,23 @@ const RegistrationForm = () => {
                   
                   <div className="space-y-4">
                     <div>
-                      <Label htmlFor="batizado" className="text-white font-semibold">É batizado na Igreja Católica?</Label>
-                      <Input id="batizado" value={formData.batizado} onChange={e => handleInputChange('batizado', e.target.value)} placeholder="Digite sua resposta" className="mt-2 border-2 border-secondary/30 focus:border-secondary focus:ring-2 focus:ring-secondary/20 bg-white/90 text-black rounded-xl transition-all duration-300" />
+                      <Label htmlFor="batizado" className="text-white font-semibold">É batizado na Igreja Católica? *</Label>
+                      <Input id="batizado" value={formData.batizado} onChange={e => handleInputChange('batizado', e.target.value)} required placeholder="Digite sua resposta" className="mt-2 border-2 border-secondary/30 focus:border-secondary focus:ring-2 focus:ring-secondary/20 bg-white/90 text-black rounded-xl transition-all duration-300" />
                     </div>
                     
                     <div>
-                      <Label htmlFor="eucaristia" className="text-white font-semibold">Já recebeu a primeira Eucaristia?</Label>
-                      <Input id="eucaristia" value={formData.eucaristia} onChange={e => handleInputChange('eucaristia', e.target.value)} placeholder="Digite sua resposta" className="mt-2 border-2 border-secondary/30 focus:border-secondary focus:ring-2 focus:ring-secondary/20 bg-white/90 text-black rounded-xl transition-all duration-300" />
+                      <Label htmlFor="eucaristia" className="text-white font-semibold">Já recebeu a primeira Eucaristia? *</Label>
+                      <Input id="eucaristia" value={formData.eucaristia} onChange={e => handleInputChange('eucaristia', e.target.value)} required placeholder="Digite sua resposta" className="mt-2 border-2 border-secondary/30 focus:border-secondary focus:ring-2 focus:ring-secondary/20 bg-white/90 text-black rounded-xl transition-all duration-300" />
                     </div>
                     
                     <div>
-                      <Label htmlFor="crismado" className="text-white font-semibold">É Crismado?</Label>
-                      <Input id="crismado" value={formData.crismado} onChange={e => handleInputChange('crismado', e.target.value)} placeholder="Digite sua resposta" className="mt-2 border-2 border-secondary/30 focus:border-secondary focus:ring-2 focus:ring-secondary/20 bg-white/90 text-black rounded-xl transition-all duration-300" />
+                      <Label htmlFor="crismado" className="text-white font-semibold">É Crismado? *</Label>
+                      <Input id="crismado" value={formData.crismado} onChange={e => handleInputChange('crismado', e.target.value)} required placeholder="Digite sua resposta" className="mt-2 border-2 border-secondary/30 focus:border-secondary focus:ring-2 focus:ring-secondary/20 bg-white/90 text-black rounded-xl transition-all duration-300" />
                     </div>
                     
                     <div>
-                      <Label htmlFor="barraca" className="text-white font-semibold">Vai levar barraca?</Label>
-                      <Input id="barraca" value={formData.barraca} onChange={e => handleInputChange('barraca', e.target.value)} placeholder="Digite sua resposta" className="mt-2 border-2 border-secondary/30 focus:border-secondary focus:ring-2 focus:ring-secondary/20 bg-white/90 text-black rounded-xl transition-all duration-300" />
+                      <Label htmlFor="barraca" className="text-white font-semibold">Vai levar barraca? *</Label>
+                      <Input id="barraca" value={formData.barraca} onChange={e => handleInputChange('barraca', e.target.value)} required placeholder="Digite sua resposta" className="mt-2 border-2 border-secondary/30 focus:border-secondary focus:ring-2 focus:ring-secondary/20 bg-white/90 text-black rounded-xl transition-all duration-300" />
                     </div>
                   </div>
                   

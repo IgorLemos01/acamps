@@ -12,26 +12,20 @@ const InscricaoTermo = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
   const [termoAceito, setTermoAceito] = useState(false);
+  const [modalidade, setModalidade] = useState('');
   const [allData, setAllData] = useState<any>({});
 
   useEffect(() => {
-    // Verificar se existem dados das páginas anteriores
+    // Verificar se existem dados da primeira página
     const inscricaoData = sessionStorage.getItem('inscricaoData');
-    const saudeData = sessionStorage.getItem('inscricaoSaudeData');
     
-    if (!inscricaoData || !saudeData) {
+    if (!inscricaoData) {
       navigate('/inscricao');
       return;
     }
 
-    // Combinar todos os dados
-    const combinedData = {
-      ...JSON.parse(inscricaoData),
-      ...JSON.parse(saudeData)
-    };
-    setAllData(combinedData);
+    setAllData(JSON.parse(inscricaoData));
   }, [navigate]);
 
   const handleWhatsAppClick = () => {
@@ -52,123 +46,22 @@ const InscricaoTermo = () => {
       return;
     }
 
-    setIsLoading(true);
-
-    try {
-      // IMPORTANTE: Para usar este formulário, você precisa:
-      // 1. Criar uma conta gratuita em https://formspree.io/
-      // 2. Criar um novo formulário
-      // 3. Substituir 'YOUR_FORM_ID' pelo ID do seu formulário
-      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...allData,
-          termoAceito: true,
-          subject: 'Nova Inscrição Completa ACAMP\'S',
-          message: `Nova inscrição completa recebida para o ACAMP'S:
-          
-DADOS PESSOAIS:
-Nome: ${allData.fullName}
-Email: ${allData.email}
-Telefone: ${allData.phone}
-Idade: ${allData.age}
-CPF: ${allData.cpf}
-RG: ${allData.rg}
-
-INFORMAÇÕES DE SAÚDE:
-Já participou de ACAMP'S: ${allData.jaParticipou}
-Dieta: ${allData.dieta}
-Intolerância à lactose: ${allData.intoleranciaLactose}
-Alergia a medicamento: ${allData.alergiaMedicamento || 'Não informado'}
-Medicamento contínuo: ${allData.medicamentoContinuo || 'Não informado'}
-Comorbidade: ${allData.comorbidade || 'Não informado'}
-
-CONTATO DE EMERGÊNCIA:
-Nome: ${allData.contatoEmergenciaNome}
-Telefone: ${allData.contatoEmergenciaTelefone}
-Parentesco: ${allData.grauParentesco}
-
-INFORMAÇÕES RELIGIOSAS:
-Batizado: ${allData.batizadoCatolico}
-Primeira Eucaristia: ${allData.primeiraEucaristia}
-Crismado: ${allData.crismado}
-
-ACAMPAMENTO:
-Vai levar barraca: ${allData.levaBarraca}
-
-TERMO: Aceito`
-        }),
-      });
-
-      if (response.ok) {
-        setIsSuccess(true);
-        // Limpar dados do sessionStorage
-        sessionStorage.removeItem('inscricaoData');
-        sessionStorage.removeItem('inscricaoSaudeData');
-        
-        toast({
-          title: "Inscrição finalizada com sucesso!",
-          description: "Agora confirme sua participação pelo WhatsApp.",
-        });
-      } else {
-        throw new Error('Erro ao enviar formulário');
-      }
-    } catch (error) {
+    if (!modalidade) {
       toast({
-        title: "Erro ao finalizar inscrição",
-        description: "Tente novamente ou entre em contato pelo WhatsApp.",
+        title: "Modalidade obrigatória",
+        description: "Selecione se você irá como Servo ou Participante.",
         variant: "destructive",
       });
-    } finally {
-      setIsLoading(false);
+      return;
     }
+
+    // Salvar modalidade no sessionStorage
+    sessionStorage.setItem('modalidade', modalidade);
+    
+    // Redirecionar para a página de pagamento
+    navigate('/pagamento');
   };
 
-  if (isSuccess) {
-    return (
-      <div className="min-h-screen bg-background">
-        <Header />
-        
-        <main className="pt-24 pb-20">
-          <div className="container mx-auto px-4">
-            <div className="max-w-2xl mx-auto text-center">
-              <Card className="p-8 bg-card shadow-brand animate-slide-up">
-                <div className="mb-6">
-                  <CheckCircle className="w-16 h-16 text-primary mx-auto mb-4" />
-                  <h1 className="font-brand text-3xl md:text-4xl text-foreground mb-4">
-                    Inscrição Finalizada!
-                  </h1>
-                  <p className="text-lg text-muted-foreground mb-8">
-                    Sua inscrição foi enviada com sucesso. Agora confirme sua participação pelo WhatsApp.
-                  </p>
-                </div>
-
-                <Button
-                  onClick={handleWhatsAppClick}
-                  className="w-full bg-gradient-brand hover:bg-gradient-secondary text-foreground font-bold py-4 text-lg shadow-brand transition-all duration-300 hover:shadow-glow hover:scale-105 mb-4"
-                >
-                  <MessageCircle className="w-5 h-5 mr-2" />
-                  Confirmar pelo WhatsApp
-                </Button>
-
-                <Button
-                  onClick={() => navigate('/')}
-                  variant="outline"
-                  className="w-full"
-                >
-                  Voltar ao Início
-                </Button>
-              </Card>
-            </div>
-          </div>
-        </main>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -263,20 +156,51 @@ TERMO: Aceito`
                   </Label>
                 </div>
 
+                {/* Modalidade */}
+                <div className="p-6 bg-primary/10 rounded-lg border border-primary/20">
+                  <Label className="text-card-foreground font-bold text-lg mb-4 block">
+                    Você irá para o ACAMP'S como servo ou participante? *
+                  </Label>
+                  <div className="flex gap-4">
+                    <Button
+                      type="button"
+                      onClick={() => setModalidade('Servo')}
+                      className={`flex-1 py-4 text-lg font-bold rounded-xl transition-all duration-300 ${
+                        modalidade === 'Servo'
+                          ? 'bg-accent text-white shadow-glow scale-105'
+                          : 'bg-white/20 text-card-foreground hover:bg-white/30'
+                      }`}
+                    >
+                      Servo
+                    </Button>
+                    <Button
+                      type="button"
+                      onClick={() => setModalidade('Participante')}
+                      className={`flex-1 py-4 text-lg font-bold rounded-xl transition-all duration-300 ${
+                        modalidade === 'Participante'
+                          ? 'bg-gradient-brand text-foreground shadow-glow scale-105'
+                          : 'bg-white/20 text-card-foreground hover:bg-white/30'
+                      }`}
+                    >
+                      Participante
+                    </Button>
+                  </div>
+                </div>
+
                 <Button
                   type="submit"
-                  disabled={isLoading || !termoAceito}
+                  disabled={isLoading || !termoAceito || !modalidade}
                   className="w-full bg-gradient-brand hover:bg-gradient-secondary text-foreground font-bold py-4 text-lg shadow-brand transition-all duration-300 hover:shadow-glow hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isLoading ? (
                     <div className="flex items-center gap-2">
                       <div className="w-4 h-4 border-2 border-foreground border-t-transparent rounded-full animate-spin"></div>
-                      Finalizando Inscrição...
+                      Processando...
                     </div>
                   ) : (
                     <div className="flex items-center gap-2">
                       <Send className="w-5 h-5" />
-                      Finalizar Inscrição
+                      Avançar para Pagamento
                     </div>
                   )}
                 </Button>
