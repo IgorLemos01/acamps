@@ -19,20 +19,16 @@ const InscricaoTermo = () => {
   const [allData, setAllData] = useState<any>({});
 
   useEffect(() => {
-    // Verificar se existem dados das páginas anteriores
+    // Verificar se existem dados da página anterior
     const inscricaoData = sessionStorage.getItem('inscricaoData');
-    const saudeData = sessionStorage.getItem('inscricaoSaudeData');
     
-    if (!inscricaoData || !saudeData) {
+    if (!inscricaoData) {
       navigate('/inscricao');
       return;
     }
 
-    // Combinar todos os dados
-    const combinedData = {
-      ...JSON.parse(inscricaoData),
-      ...JSON.parse(saudeData)
-    };
+    // Usar apenas os dados da primeira página
+    const combinedData = JSON.parse(inscricaoData);
     setAllData(combinedData);
   }, [navigate]);
 
@@ -83,7 +79,6 @@ const InscricaoTermo = () => {
       setIsSuccess(true);
       // Limpar dados do sessionStorage
       sessionStorage.removeItem('inscricaoData');
-      sessionStorage.removeItem('inscricaoSaudeData');
       
       toast({
         title: "Inscrição finalizada com sucesso!",
