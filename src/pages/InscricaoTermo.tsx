@@ -5,7 +5,6 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useToast } from '@/hooks/use-toast';
 import Header from '@/components/Header';
 
@@ -15,20 +14,23 @@ const InscricaoTermo = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [termoAceito, setTermoAceito] = useState(false);
-  const [modalidade, setModalidade] = useState('');
   const [allData, setAllData] = useState<any>({});
 
   useEffect(() => {
-    // Verificar se existem dados da página anterior
+    // Verificar se existem dados das páginas anteriores
     const inscricaoData = sessionStorage.getItem('inscricaoData');
+    const saudeData = sessionStorage.getItem('inscricaoSaudeData');
     
-    if (!inscricaoData) {
+    if (!inscricaoData || !saudeData) {
       navigate('/inscricao');
       return;
     }
 
-    // Usar apenas os dados da primeira página
-    const combinedData = JSON.parse(inscricaoData);
+    // Combinar todos os dados
+    const combinedData = {
+      ...JSON.parse(inscricaoData),
+      ...JSON.parse(saudeData)
+    };
     setAllData(combinedData);
   }, [navigate]);
 
@@ -50,45 +52,71 @@ const InscricaoTermo = () => {
       return;
     }
 
-    if (!modalidade) {
-      toast({
-        title: "Campo obrigatório",
-        description: "Você deve selecionar sua modalidade (Participante ou Servo).",
-        variant: "destructive",
-      });
-      return;
-    }
-
     setIsLoading(true);
 
     try {
-      // Enviar para Google Apps Script
-      const formData = new FormData();
-      Object.entries(allData).forEach(([key, value]) => {
-        formData.append(key, String(value));
-      });
-      formData.append('termoAceito', 'true');
-      formData.append('modalidade', modalidade);
-
-      await fetch('https://script.google.com/macros/s/AKfycbwockEsTLCwhpBCs3aVf0l9oeMTTJEuongY-EVS8Qc_08UJP1HDeawHbbhsS63MQGQlGg/exec', {
+      // IMPORTANTE: Para usar este formulário, você precisa:
+      // 1. Criar uma conta gratuita em https://formspree.io/
+      // 2. Criar um novo formulário
+      // 3. Substituir 'YOUR_FORM_ID' pelo ID do seu formulário
+      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
         method: 'POST',
-        mode: 'no-cors',
-        body: formData,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...allData,
+          termoAceito: true,
+          subject: 'Nova Inscrição Completa ACAMP\'S',
+          message: `Nova inscrição completa recebida para o ACAMP'S:
+          
+DADOS PESSOAIS:
+Nome: ${allData.fullName}
+Email: ${allData.email}
+Telefone: ${allData.phone}
+Idade: ${allData.age}
+CPF: ${allData.cpf}
+RG: ${allData.rg}
+
+INFORMAÇÕES DE SAÚDE:
+Já participou de ACAMP'S: ${allData.jaParticipou}
+Dieta: ${allData.dieta}
+Intolerância à lactose: ${allData.intoleranciaLactose}
+Alergia a medicamento: ${allData.alergiaMedicamento || 'Não informado'}
+Medicamento contínuo: ${allData.medicamentoContinuo || 'Não informado'}
+Comorbidade: ${allData.comorbidade || 'Não informado'}
+
+CONTATO DE EMERGÊNCIA:
+Nome: ${allData.contatoEmergenciaNome}
+Telefone: ${allData.contatoEmergenciaTelefone}
+Parentesco: ${allData.grauParentesco}
+
+INFORMAÇÕES RELIGIOSAS:
+Batizado: ${allData.batizadoCatolico}
+Primeira Eucaristia: ${allData.primeiraEucaristia}
+Crismado: ${allData.crismado}
+
+ACAMPAMENTO:
+Vai levar barraca: ${allData.levaBarraca}
+
+TERMO: Aceito`
+        }),
       });
 
-      setIsSuccess(true);
-      // Limpar dados do sessionStorage
-      sessionStorage.removeItem('inscricaoData');
-      
-      toast({
-        title: "Inscrição finalizada com sucesso!",
-        description: "Redirecionando para pagamento...",
-      });
-
-      // Redirecionar baseado na modalidade
-      setTimeout(() => {
-        navigate('/pagamento', { state: { modalidade } });
-      }, 1500);
+      if (response.ok) {
+        setIsSuccess(true);
+        // Limpar dados do sessionStorage
+        sessionStorage.removeItem('inscricaoData');
+        sessionStorage.removeItem('inscricaoSaudeData');
+        
+        toast({
+          title: "Inscrição finalizada com sucesso!",
+          description: "Agora confirme sua participação pelo WhatsApp.",
+        });
+      } else {
+        throw new Error('Erro ao enviar formulário');
+      }
     } catch (error) {
       toast({
         title: "Erro ao finalizar inscrição",
@@ -221,27 +249,6 @@ const InscricaoTermo = () => {
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Pergunta de Modalidade */}
-                <div className="p-6 bg-primary/10 rounded-lg border border-primary/20">
-                  <Label className="text-card-foreground font-semibold text-lg mb-4 block">
-                    Você irá para o Acamp's como participante ou servo? *
-                  </Label>
-                  <RadioGroup
-                    value={modalidade}
-                    onValueChange={(value) => setModalidade(value)}
-                    className="flex gap-6"
-                  >
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="Participante" id="modalidade-participante" />
-                      <Label htmlFor="modalidade-participante" className="cursor-pointer">Participante</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="Servo" id="modalidade-servo" />
-                      <Label htmlFor="modalidade-servo" className="cursor-pointer">Servo</Label>
-                    </div>
-                  </RadioGroup>
-                </div>
-
                 {/* Checkbox obrigatório */}
                 <div className="flex items-start space-x-3 p-4 bg-secondary/10 rounded-lg border border-secondary/20">
                   <Checkbox
@@ -258,7 +265,7 @@ const InscricaoTermo = () => {
 
                 <Button
                   type="submit"
-                  disabled={isLoading || !termoAceito || !modalidade}
+                  disabled={isLoading || !termoAceito}
                   className="w-full bg-gradient-brand hover:bg-gradient-secondary text-foreground font-bold py-4 text-lg shadow-brand transition-all duration-300 hover:shadow-glow hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isLoading ? (
