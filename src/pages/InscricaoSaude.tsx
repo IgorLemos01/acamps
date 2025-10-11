@@ -83,12 +83,13 @@ const InscricaoSaude = () => {
                 <div className="space-y-4">
                   <Label className="text-card-foreground font-semibold flex items-center gap-2 text-lg">
                     <Users className="w-5 h-5 text-primary" />
-                    Já participou de algum ACAMP'S?
+                    Já participou de algum ACAMP'S? *
                   </Label>
                   <RadioGroup
                     value={formData.jaParticipou}
                     onValueChange={(value) => handleRadioChange('jaParticipou', value)}
                     className="flex gap-6"
+                    required
                   >
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="sim" id="jaParticipou-sim" />
@@ -105,12 +106,13 @@ const InscricaoSaude = () => {
                 <div className="space-y-4">
                   <Label className="text-card-foreground font-semibold flex items-center gap-2 text-lg">
                     <Heart className="w-5 h-5 text-secondary" />
-                    Você é vegano ou vegetariano?
+                    Você é vegano ou vegetariano? *
                   </Label>
                   <RadioGroup
                     value={formData.dieta}
                     onValueChange={(value) => handleRadioChange('dieta', value)}
                     className="flex flex-wrap gap-6"
+                    required
                   >
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="vegano" id="dieta-vegano" />
@@ -130,12 +132,13 @@ const InscricaoSaude = () => {
                 {/* Intolerância lactose */}
                 <div className="space-y-4">
                   <Label className="text-card-foreground font-semibold text-lg">
-                    Você possui intolerância à lactose?
+                    Você possui intolerância à lactose? *
                   </Label>
                   <RadioGroup
                     value={formData.intoleranciaLactose}
                     onValueChange={(value) => handleRadioChange('intoleranciaLactose', value)}
                     className="flex gap-6"
+                    required
                   >
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="sim" id="lactose-sim" />
@@ -152,44 +155,47 @@ const InscricaoSaude = () => {
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="alergiaMedicamento" className="text-card-foreground font-semibold">
-                      Tem alergia a algum medicamento? Se sim, qual?
+                      Tem alergia a algum medicamento? Se sim, qual? *
                     </Label>
                     <Textarea
                       id="alergiaMedicamento"
                       name="alergiaMedicamento"
                       value={formData.alergiaMedicamento}
                       onChange={handleInputChange}
-                      placeholder="Descreva suas alergias medicamentosas"
+                      placeholder="Descreva suas alergias medicamentosas ou 'Não'"
                       className="border-primary/20 focus:border-primary"
+                      required
                     />
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="medicamentoContinuo" className="text-card-foreground font-semibold">
-                      Faz uso de medicamento contínuo? Se sim, qual?
+                      Faz uso de medicamento contínuo? Se sim, qual? *
                     </Label>
                     <Textarea
                       id="medicamentoContinuo"
                       name="medicamentoContinuo"
                       value={formData.medicamentoContinuo}
                       onChange={handleInputChange}
-                      placeholder="Liste os medicamentos de uso contínuo"
+                      placeholder="Liste os medicamentos de uso contínuo ou 'Não'"
                       className="border-primary/20 focus:border-primary"
+                      required
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
                   <Label htmlFor="comorbidade" className="text-card-foreground font-semibold">
-                    Tem alguma comorbidade? (asma, diabetes, etc.)
+                    Tem alguma comorbidade? (asma, diabetes, etc.) *
                   </Label>
                   <Textarea
                     id="comorbidade"
                     name="comorbidade"
                     value={formData.comorbidade}
                     onChange={handleInputChange}
-                    placeholder="Descreva suas comorbidades"
+                    placeholder="Descreva suas comorbidades ou 'Não'"
                     className="border-primary/20 focus:border-primary"
+                    required
                   />
                 </div>
 
@@ -259,12 +265,13 @@ const InscricaoSaude = () => {
 
                   <div className="space-y-4">
                     <Label className="text-card-foreground font-semibold">
-                      É batizado na Igreja Católica?
+                      É batizado na Igreja Católica? *
                     </Label>
                     <RadioGroup
                       value={formData.batizadoCatolico}
                       onValueChange={(value) => handleRadioChange('batizadoCatolico', value)}
                       className="flex gap-6"
+                      required
                     >
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="sim" id="batizado-sim" />
@@ -279,12 +286,13 @@ const InscricaoSaude = () => {
 
                   <div className="space-y-4">
                     <Label className="text-card-foreground font-semibold">
-                      Já recebeu a primeira Eucaristia?
+                      Já recebeu a primeira Eucaristia? *
                     </Label>
                     <RadioGroup
                       value={formData.primeiraEucaristia}
                       onValueChange={(value) => handleRadioChange('primeiraEucaristia', value)}
                       className="flex gap-6"
+                      required
                     >
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="sim" id="eucaristia-sim" />
@@ -299,12 +307,13 @@ const InscricaoSaude = () => {
 
                   <div className="space-y-4">
                     <Label className="text-card-foreground font-semibold">
-                      É Crismado?
+                      É Crismado? *
                     </Label>
                     <RadioGroup
                       value={formData.crismado}
                       onValueChange={(value) => handleRadioChange('crismado', value)}
                       className="flex gap-6"
+                      required
                     >
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="sim" id="crismado-sim" />
@@ -319,12 +328,13 @@ const InscricaoSaude = () => {
 
                   <div className="space-y-4">
                     <Label className="text-card-foreground font-semibold">
-                      Vai levar barraca?
+                      Vai levar barraca? *
                     </Label>
                     <RadioGroup
                       value={formData.levaBarraca}
                       onValueChange={(value) => handleRadioChange('levaBarraca', value)}
                       className="flex gap-6"
+                      required
                     >
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="sim" id="barraca-sim" />

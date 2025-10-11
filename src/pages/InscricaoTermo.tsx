@@ -55,11 +55,62 @@ const InscricaoTermo = () => {
       return;
     }
 
-    // Salvar modalidade no sessionStorage
-    sessionStorage.setItem('modalidade', modalidade);
-    
-    // Redirecionar para a página de pagamento
-    navigate('/pagamento');
+    setIsLoading(true);
+
+    try {
+      // Recuperar dados das páginas anteriores
+      const inscricaoData = JSON.parse(sessionStorage.getItem('inscricaoData') || '{}');
+      const saudeData = JSON.parse(sessionStorage.getItem('inscricaoSaudeData') || '{}');
+
+      // Preparar dados completos para envio
+      const formData = new URLSearchParams();
+      formData.append('nome', inscricaoData.nome || '');
+      formData.append('email', inscricaoData.email || '');
+      formData.append('telefone', inscricaoData.telefone || '');
+      formData.append('idade', inscricaoData.idade || '');
+      formData.append('cpf', inscricaoData.cpf || '');
+      formData.append('rg', inscricaoData.rg || '');
+      formData.append('participou', saudeData.jaParticipou || '');
+      formData.append('vegano', saudeData.dieta || '');
+      formData.append('intolerancia', saudeData.intoleranciaLactose || '');
+      formData.append('alergia', saudeData.alergiaMedicamento || '');
+      formData.append('medicamento', saudeData.medicamentoContinuo || '');
+      formData.append('comorbidade', saudeData.comorbidade || '');
+      formData.append('emergencia_nome', saudeData.contatoEmergenciaNome || '');
+      formData.append('emergencia_tel', saudeData.contatoEmergenciaTelefone || '');
+      formData.append('emergencia_parentesco', saudeData.grauParentesco || '');
+      formData.append('batizado', saudeData.batizadoCatolico || '');
+      formData.append('eucaristia', saudeData.primeiraEucaristia || '');
+      formData.append('crismado', saudeData.crismado || '');
+      formData.append('barraca', saudeData.levaBarraca || '');
+      formData.append('modalidade', modalidade);
+
+      // Enviar para Google Sheets
+      await fetch('https://script.google.com/macros/s/AKfycbzjcWXAtx4TtOQcEge87K2ermTOaMQ2NWdyP4o22R1u1ggZvRP7s4SapRhR6eFFkITKqw/exec', {
+        method: 'POST',
+        body: formData
+      });
+
+      // Salvar modalidade no sessionStorage
+      sessionStorage.setItem('modalidade', modalidade);
+      
+      toast({
+        title: "Inscrição finalizada!",
+        description: "Redirecionando para pagamento...",
+      });
+
+      // Redirecionar para a página de pagamento
+      navigate('/pagamento');
+      
+    } catch (error) {
+      toast({
+        title: "Erro ao enviar inscrição",
+        description: "Tente novamente em alguns instantes.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
 
@@ -161,7 +212,7 @@ const InscricaoTermo = () => {
                   <Label className="text-card-foreground font-bold text-lg mb-4 block">
                     Você irá para o ACAMP'S como servo ou participante? *
                   </Label>
-                  <div className="flex gap-4">
+                  <div className="flex gap-4 mb-6">
                     <Button
                       type="button"
                       onClick={() => setModalidade('Servo')}
@@ -195,12 +246,12 @@ const InscricaoTermo = () => {
                   {isLoading ? (
                     <div className="flex items-center gap-2">
                       <div className="w-4 h-4 border-2 border-foreground border-t-transparent rounded-full animate-spin"></div>
-                      Processando...
+                      Finalizando Inscrição...
                     </div>
                   ) : (
                     <div className="flex items-center gap-2">
-                      <Send className="w-5 h-5" />
-                      Avançar para Pagamento
+                      <CheckCircle className="w-5 h-5" />
+                      Finalizar Inscrição
                     </div>
                   )}
                 </Button>
@@ -208,7 +259,7 @@ const InscricaoTermo = () => {
 
               <div className="mt-6 p-4 bg-primary/10 rounded-lg border border-primary/20">
                 <p className="text-sm text-card-foreground text-center">
-                  <strong>Importante:</strong> Após finalizar a inscrição, você receberá instruções para confirmação e pagamento via WhatsApp.
+                  <strong>Importante:</strong> Após finalizar a inscrição, você será direcionado para escolher a forma de pagamento.
                 </p>
               </div>
             </Card>
