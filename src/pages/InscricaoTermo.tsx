@@ -34,7 +34,7 @@ const Terms = () => {
 
     try {
       const response = await fetch(
-        'https://script.google.com/macros/s/AKfycbyi-cTS6chgMJLqX7ve2g3J2oa2GEkggVSGOPUnBmhKDAkvY4f3H4tKPiPPHFQR9yy3Rw/exec',
+        'https://script.google.com/macros/s/AKfycbwockEsTLCwhpBCs3aVf0l9oeMTTJEuongY-EVS8Qc_08UJP1HDeawHbbhsS63MQGQlGg/exec',
         {
           method: 'POST',
           body: JSON.stringify(formData),
