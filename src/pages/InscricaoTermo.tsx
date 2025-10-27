@@ -63,33 +63,38 @@ const InscricaoTermo = () => {
       const saudeData = JSON.parse(sessionStorage.getItem('inscricaoSaudeData') || '{}');
 
       // Preparar dados completos para envio
-      const formData = new URLSearchParams();
-      formData.append('nome', inscricaoData.nome || '');
-      formData.append('email', inscricaoData.email || '');
-      formData.append('telefone', inscricaoData.telefone || '');
-      formData.append('idade', inscricaoData.idade || '');
-      formData.append('cpf', inscricaoData.cpf || '');
-      formData.append('rg', inscricaoData.rg || '');
-      formData.append('participou', saudeData.jaParticipou || '');
-      formData.append('vegano', saudeData.dieta || '');
-      formData.append('intolerancia', saudeData.intoleranciaLactose || '');
-      formData.append('alergia', saudeData.alergiaMedicamento || '');
-      formData.append('medicamento', saudeData.medicamentoContinuo || '');
-      formData.append('comorbidade', saudeData.comorbidade || '');
-      formData.append('emergencia_nome', saudeData.contatoEmergenciaNome || '');
-      formData.append('emergencia_tel', saudeData.contatoEmergenciaTelefone || '');
-      formData.append('emergencia_parentesco', saudeData.grauParentesco || '');
-      formData.append('batizado', saudeData.batizadoCatolico || '');
-      formData.append('eucaristia', saudeData.primeiraEucaristia || '');
-      formData.append('crismado', saudeData.crismado || '');
-      formData.append('barraca', saudeData.levaBarraca || '');
-      formData.append('modalidade', modalidade);
+// Preparar dados completos para envio
+      const payload = {
+        nome: inscricaoData.nome || '',
+        email: inscricaoData.email || '',
+        telefone: inscricaoData.telefone || '',
+        idade: inscricaoData.idade || '',
+        cpf: inscricaoData.cpf || '',
+        rg: inscricaoData.rg || '',
+        participou: saudeData.jaParticipou || '',
+        vegano: saudeData.dieta || '',
+        intolerancia: saudeData.intoleranciaLactose || '',
+        alergia: saudeData.alergiaMedicamento || '',
+        medicamento: saudeData.medicamentoContinuo || '',
+        comorbidade: saudeData.comorbidade || '',
+        emergencia_nome: saudeData.contatoEmergenciaNome || '',
+        emergencia_tel: saudeData.contatoEmergenciaTelefone || '',
+        emergencia_parentesco: saudeData.grauParentesco || '',
+        batizado: saudeData.batizadoCatolico || '',
+        eucaristia: saudeData.primeiraEucaristia || '',
+        crismado: saudeData.crismado || '',
+        barraca: saudeData.levaBarraca || '',
+        modalidade: modalidade
+        };
 
-      // Enviar para Google Sheets
-      await fetch('https://script.google.com/macros/s/AKfycbzjcWXAtx4TtOQcEge87K2ermTOaMQ2NWdyP4o22R1u1ggZvRP7s4SapRhR6eFFkITKqw/exec', {
-        method: 'POST',
-        body: formData
-      });
+// Enviar para Google Sheets
+await fetch('https://script.google.com/macros/s/AKfycbzjcWXAtx4TtOQcEge87K2ermTOaMQ2NWdyP4o22R1u1ggZvRP7s4SapRhR6eFFkITKqw/exec', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(payload)
+});
 
       // Salvar modalidade no sessionStorage
       sessionStorage.setItem('modalidade', modalidade);
