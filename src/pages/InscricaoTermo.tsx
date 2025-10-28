@@ -88,7 +88,7 @@ const InscricaoTermo = () => {
       };
 
       // Enviar para Google Sheets
-      await fetch('https://script.google.com/macros/s/AKfycbzjcWXAtx4TtOQcEge87K2ermTOaMQ2NWdyP4o22R1u1ggZvRP7s4SapRhR6eFFkITKqw/exec', {
+      await fetch('https://script.google.com/macros/s/AKfycbwDPJH-UdRxGXCQiyGD8LzyCQ0vkDQkDSgENhLvBKAYctCz8zzuHe8HsipCjzkDm5HuMg/exec', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
