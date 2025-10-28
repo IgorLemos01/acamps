@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FileText, ExternalLink, Send, MessageCircle, CheckCircle } from 'lucide-react';
+import { FileText, ExternalLink, CheckCircle } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -27,12 +27,6 @@ const InscricaoTermo = () => {
 
     setAllData(JSON.parse(inscricaoData));
   }, [navigate]);
-
-  const handleWhatsAppClick = () => {
-    const message = 'Olá! Acabei de finalizar minha inscrição no ACAMP\'S. Gostaria de confirmar minha participação.';
-    const whatsappUrl = `https://wa.me/55SEUNUMERO?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -63,7 +57,6 @@ const InscricaoTermo = () => {
       const saudeData = JSON.parse(sessionStorage.getItem('inscricaoSaudeData') || '{}');
 
       // Preparar dados completos para envio
- // Preparar dados completos para envio
       const payload = {
         nome: inscricaoData.nome || '',
         email: inscricaoData.email || '',
@@ -87,14 +80,20 @@ const InscricaoTermo = () => {
         modalidade: modalidade
       };
 
-      // Enviar para Google Sheets
-      await fetch('https://script.google.com/macros/s/AKfycbwDPJH-UdRxGXCQiyGD8LzyCQ0vkDQkDSgENhLvBKAYctCz8zzuHe8HsipCjzkDm5HuMg/exec', {
+      // Log para debug
+      console.log('Enviando dados:', payload);
+
+      // Enviar para Google Sheets com no-cors
+      const response = await fetch('https://script.google.com/macros/s/AKfycbwDPJH-UdRxGXCQiyGD8LzyCQ0vkDQkDSgENhLvBKAYctCz8zzuHe8HsipCjzkDm5HuMg/exec', {
         method: 'POST',
+        mode: 'no-cors',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(payload)
       });
+
+      console.log('Resposta recebida');
 
       // Salvar modalidade no sessionStorage
       sessionStorage.setItem('modalidade', modalidade);
@@ -104,20 +103,22 @@ const InscricaoTermo = () => {
         description: "Redirecionando para pagamento...",
       });
 
-      // Redirecionar para a página de pagamento
-      navigate('/pagamento');
+      // Delay pequeno antes de redirecionar
+      setTimeout(() => {
+        navigate('/pagamento');
+      }, 1500);
       
     } catch (error) {
+      console.error('Erro detalhado:', error);
       toast({
         title: "Erro ao enviar inscrição",
-        description: "Tente novamente em alguns instantes.",
+        description: error instanceof Error ? error.message : "Tente novamente em alguns instantes.",
         variant: "destructive",
       });
     } finally {
       setIsLoading(false);
     }
   };
-
 
   return (
     <div className="min-h-screen bg-background">
