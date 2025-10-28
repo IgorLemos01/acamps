@@ -63,7 +63,7 @@ const InscricaoTermo = () => {
       const saudeData = JSON.parse(sessionStorage.getItem('inscricaoSaudeData') || '{}');
 
       // Preparar dados completos para envio
-// Preparar dados completos para envio
+ // Preparar dados completos para envio
       const payload = {
         nome: inscricaoData.nome || '',
         email: inscricaoData.email || '',
@@ -85,16 +85,16 @@ const InscricaoTermo = () => {
         crismado: saudeData.crismado || '',
         barraca: saudeData.levaBarraca || '',
         modalidade: modalidade
-        };
+      };
 
-// Enviar para Google Sheets
-await fetch('https://script.google.com/macros/s/AKfycbzjcWXAtx4TtOQcEge87K2ermTOaMQ2NWdyP4o22R1u1ggZvRP7s4SapRhR6eFFkITKqw/exec', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify(payload)
-});
+      // Enviar para Google Sheets
+      await fetch('https://script.google.com/macros/s/AKfycbzjcWXAtx4TtOQcEge87K2ermTOaMQ2NWdyP4o22R1u1ggZvRP7s4SapRhR6eFFkITKqw/exec', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload)
+      });
 
       // Salvar modalidade no sessionStorage
       sessionStorage.setItem('modalidade', modalidade);
