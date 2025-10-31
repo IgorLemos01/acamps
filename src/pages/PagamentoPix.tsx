@@ -6,7 +6,7 @@ import Header from '@/components/Header';
 
 const PagamentoPix = () => {
   const { toast } = useToast();
-  const pixKey = 'juntudearacaju@comshalom.org';
+  const pixKey = 'juventudearacaju@comshalom.org';
 
   const handleCopyPix = () => {
     navigator.clipboard.writeText(pixKey);
