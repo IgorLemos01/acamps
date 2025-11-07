@@ -18,7 +18,50 @@ const PagamentoOpcoes = () => {
     setModalidade(savedModalidade);
   }, [navigate]);
 
+  const enviarFormaPagamento = async (formaPagamento: string) => {
+    try {
+      const inscricaoData = JSON.parse(sessionStorage.getItem('inscricaoData') || '{}');
+      const saudeData = JSON.parse(sessionStorage.getItem('inscricaoSaudeData') || '{}');
+
+      const payload = {
+        nome: inscricaoData.nome || '',
+        email: inscricaoData.email || '',
+        telefone: inscricaoData.telefone || '',
+        idade: inscricaoData.idade || '',
+        cpf: inscricaoData.cpf || '',
+        rg: inscricaoData.rg || '',
+        participou: saudeData.jaParticipou || '',
+        vegano: saudeData.dieta || '',
+        intolerancia: saudeData.intoleranciaLactose || '',
+        alergia: saudeData.alergiaMedicamento || '',
+        medicamento: saudeData.medicamentoContinuo || '',
+        comorbidade: saudeData.comorbidade || '',
+        emergencia_nome: saudeData.contatoEmergenciaNome || '',
+        emergencia_tel: saudeData.contatoEmergenciaTelefone || '',
+        emergencia_parentesco: saudeData.grauParentesco || '',
+        batizado: saudeData.batizadoCatolico || '',
+        eucaristia: saudeData.primeiraEucaristia || '',
+        crismado: saudeData.crismado || '',
+        barraca: saudeData.levaBarraca || '',
+        modalidade: modalidade,
+        forma_pagamento: formaPagamento
+      };
+
+      await fetch('https://script.google.com/macros/s/AKfycbwDPJH-UdRxGXCQiyGD8LzyCQ0vkDQkDSgENhLvBKAYctCz8zzuHe8HsipCjzkDm5HuMg/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload)
+      });
+    } catch (error) {
+      console.error('Erro ao enviar forma de pagamento:', error);
+    }
+  };
+
   const handleCartao = () => {
+    enviarFormaPagamento('Cartão');
     if (modalidade === 'Servo') {
       window.open('https://mpago.la/29LXc7j', '_blank');
       navigate('/pagamento/confirmacao');
@@ -29,10 +72,12 @@ const PagamentoOpcoes = () => {
   };
 
   const handlePix = () => {
+    enviarFormaPagamento('PIX');
     navigate('/pagamento/pix');
   };
 
   const handleCarne = () => {
+    enviarFormaPagamento('Carnê');
     navigate('/pagamento/carne');
   };
 
