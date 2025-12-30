@@ -63,10 +63,10 @@ const PagamentoOpcoes = () => {
   const handleCartao = () => {
     enviarFormaPagamento('Cartão');
     if (modalidade === 'Servo') {
-      window.open('https://mpago.la/29LXc7j', '_blank');
+      window.open('https://mpago.la/1K6mgrL', '_blank');
       navigate('/pagamento/confirmacao');
     } else {
-      window.open('https://mpago.la/2EVe7gg', '_blank');
+      window.open('https://mpago.la/2rSs9Ye', '_blank');
       navigate('/pagamento/confirmacao');
     }
   };
