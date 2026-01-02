@@ -1,22 +1,21 @@
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ShoppingCart } from 'lucide-react';
-import melhoresFeriasImage from '@/assets/melhores-ferias.jpg';
-import beyondWordsImage from '@/assets/beyond-words.jpg';
-import acampBannerImage from '@/assets/acamp-banner.jpg';
+import camisaBeyondWords from '@/assets/camisa-beyond-words.png';
+import camisaMissaoAracaju from '@/assets/camisa-missao-aracaju.jpeg';
 
 const products = [{
   id: 1,
-  name: 'Produtos em breve',
-  description: 'Aguarde... produtos exclusivos chegando em breve!'
+  name: 'Camisa Beyond Words',
+  description: 'Camisa oficial ACAMP\'S - Beyond Words. Since 1989, impossível descrever!',
+  image: camisaBeyondWords,
+  available: true
 }, {
   id: 2,
-  name: 'Produtos em breve',
-  description: 'Aguarde... equipamentos de alta qualidade para sua aventura!'
-}, {
-  id: 3,
-  name: 'Produtos em breve',
-  description: 'Aguarde... acessórios exclusivos do ACAMP\'S!'
+  name: 'Camisa Missão Aracaju 35 Anos',
+  description: 'Camisa comemorativa dos 35 anos da Missão Aracaju. Edição especial!',
+  image: camisaMissaoAracaju,
+  available: true
 }];
 
 const Products = () => {
@@ -30,26 +29,17 @@ const Products = () => {
           <p className="text-xl text-foreground/80 max-w-2xl mx-auto animate-slide-up">Equipamentos de alta qualidade para sua experiência</p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {products.map((product, index) => (
             <Card key={product.id} className="overflow-hidden bg-card shadow-brand hover:shadow-glow transition-all duration-300 hover:scale-105 group animate-fade-in" style={{
               animationDelay: `${index * 0.2}s`
             }}>
               <div className="relative overflow-hidden">
-                <div 
-                  className="w-full h-64 bg-cover bg-center bg-no-repeat flex items-center justify-center relative"
-                  style={{ 
-                    backgroundImage: index === 0 ? `url(${melhoresFeriasImage})` : 
-                                    index === 1 ? `url(${beyondWordsImage})` :
-                                    `url(${acampBannerImage})`
-                  }}
-                >
-                  <div className="absolute inset-0 bg-background/60"></div>
-                  <div className="text-center relative z-10">
-                    <div className="text-4xl mb-2">⏳</div>
-                    <div className="text-lg font-semibold text-foreground">Aguarde...</div>
-                  </div>
-                </div>
+                <img 
+                  src={product.image} 
+                  alt={product.name}
+                  className="w-full h-72 object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                />
                 <div className="absolute inset-0 bg-gradient-brand opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
               </div>
               
@@ -61,20 +51,17 @@ const Products = () => {
                   {product.description}
                 </p>
                 <div className="flex items-center justify-center">
-                  <Button disabled className="bg-muted text-muted-foreground cursor-not-allowed">
+                  <Button 
+                    className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
+                    onClick={() => window.open('https://wa.me/5579999999999?text=Olá! Tenho interesse na ' + product.name, '_blank')}
+                  >
                     <ShoppingCart className="w-4 h-4 mr-2" />
-                    Em Breve
+                    Comprar
                   </Button>
                 </div>
               </div>
             </Card>
           ))}
-        </div>
-        
-        <div className="text-center mt-12">
-          <Button size="lg" disabled className="bg-muted text-muted-foreground font-bold text-lg px-8 py-4 rounded-full cursor-not-allowed">
-            Produtos Em Breve
-          </Button>
         </div>
       </div>
     </section>
