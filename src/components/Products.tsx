@@ -53,7 +53,7 @@ const Products = () => {
                 <div className="flex items-center justify-center">
                   <Button 
                     className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
-                    onClick={() => window.open('https://wa.me/5579999999999?text=Olá! Tenho interesse na ' + product.name, '_blank')}
+                    onClick={() => window.open('https://wa.me/5579988801082?text=Olá! Tenho interesse na ' + product.name, '_blank')}
                   >
                     <ShoppingCart className="w-4 h-4 mr-2" />
                     Comprar
