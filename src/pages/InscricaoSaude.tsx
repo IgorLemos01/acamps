@@ -180,7 +180,7 @@ const InscricaoSaude = () => {
                       name="medicamentoContinuo"
                       value={formData.medicamentoContinuo}
                       onChange={handleInputChange}
-                      placeholder="Liste os medicamentos de uso contínuo ou 'Não'"
+                      placeholder="Informe nome do remédio, dosagem e horário, ou 'Não'"
                       className="border-primary/20 focus:border-primary"
                       required
                     />
