@@ -76,7 +76,10 @@ const InscricaoTermo = () => {
         batizado: saudeData.batizadoCatolico || '',
         eucaristia: saudeData.primeiraEucaristia || '',
         crismado: saudeData.crismado || '',
-        barraca: saudeData.levaBarraca || '',
+        saude_mental: saudeData.saudeMental || '',
+        saude_mental_detalhes: saudeData.saudeMentalDetalhes || '',
+        hospedagem: saudeData.hospedagem || '',
+        transporte: saudeData.transporte || '',
         modalidade: modalidade
       };
 
