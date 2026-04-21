@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Heart, Users, Phone, Cross } from 'lucide-react';
+import { Heart, Users, Phone, Cross, Brain, Tent, Bus, FileDown } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -24,7 +24,10 @@ const InscricaoSaude = () => {
     batizadoCatolico: '',
     primeiraEucaristia: '',
     crismado: '',
-    levaBarraca: ''
+    saudeMental: '',
+    saudeMentalDetalhes: '',
+    hospedagem: '',
+    transporte: ''
   });
 
   useEffect(() => {
