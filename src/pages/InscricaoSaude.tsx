@@ -368,25 +368,78 @@ const InscricaoSaude = () => {
                     </RadioGroup>
                   </div>
 
-                  <div className="space-y-4">
-                    <Label className="text-card-foreground font-semibold">
-                      Vai levar barraca? *
-                    </Label>
-                    <RadioGroup
-                      value={formData.levaBarraca}
-                      onValueChange={(value) => handleRadioChange('levaBarraca', value)}
-                      className="flex gap-6"
-                      required
-                    >
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="sim" id="barraca-sim" />
-                        <Label htmlFor="barraca-sim">Sim</Label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="nao" id="barraca-nao" />
-                        <Label htmlFor="barraca-nao">Não</Label>
-                      </div>
-                    </RadioGroup>
+                </div>
+
+                {/* Hospedagem */}
+                <div className="space-y-4">
+                  <Label className="text-card-foreground font-semibold flex items-center gap-2 text-lg">
+                    <Tent className="w-5 h-5 text-accent" />
+                    Hospedagem no evento *
+                  </Label>
+                  <p className="text-sm text-muted-foreground">
+                    ⚠️ Vagas limitadas — garanta a sua o quanto antes.
+                  </p>
+                  <RadioGroup
+                    value={formData.hospedagem}
+                    onValueChange={(value) => handleRadioChange('hospedagem', value)}
+                    className="flex flex-col sm:flex-row gap-4"
+                    required
+                  >
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="alojamento" id="hospedagem-alojamento" />
+                      <Label htmlFor="hospedagem-alojamento">Alojamento (vagas limitadas)</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="barraca" id="hospedagem-barraca" />
+                      <Label htmlFor="hospedagem-barraca">Barraca própria (vagas limitadas)</Label>
+                    </div>
+                  </RadioGroup>
+                </div>
+
+                {/* Transporte */}
+                <div className="space-y-4">
+                  <Label className="text-card-foreground font-semibold flex items-center gap-2 text-lg">
+                    <Bus className="w-5 h-5 text-primary" />
+                    Como você irá ao evento? *
+                  </Label>
+                  <RadioGroup
+                    value={formData.transporte}
+                    onValueChange={(value) => handleRadioChange('transporte', value)}
+                    className="flex flex-col sm:flex-row gap-4"
+                    required
+                  >
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="onibus" id="transporte-onibus" />
+                      <Label htmlFor="transporte-onibus">Ônibus do evento (ida e volta)</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="carro" id="transporte-carro" />
+                      <Label htmlFor="transporte-carro">Carro próprio</Label>
+                    </div>
+                  </RadioGroup>
+                </div>
+
+                {/* Termo de autorização dos pais */}
+                <div className="p-4 bg-secondary/10 rounded-lg border border-secondary/20 space-y-3">
+                  <div className="flex items-start gap-3">
+                    <FileDown className="w-5 h-5 text-secondary mt-1 flex-shrink-0" />
+                    <div className="space-y-2">
+                      <p className="text-card-foreground font-semibold">
+                        Termo de Autorização dos Pais
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        Para menores de idade e/ou em caso de uso de medicação contínua, os pais devem assinar e trazer o termo impresso no dia do evento.
+                      </p>
+                      <a
+                        href="/docs/termo-autorizacao-pais.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-primary hover:text-secondary font-semibold transition-colors"
+                      >
+                        <FileDown className="w-4 h-4" />
+                        Baixar termo de autorização
+                      </a>
+                    </div>
                   </div>
                 </div>
 
