@@ -202,6 +202,45 @@ const InscricaoSaude = () => {
                   />
                 </div>
 
+                {/* Saúde mental / neurodivergência */}
+                <div className="space-y-4">
+                  <Label className="text-card-foreground font-semibold flex items-center gap-2 text-lg">
+                    <Brain className="w-5 h-5 text-secondary" />
+                    Possui autismo, ansiedade, depressão ou outra condição psicológica/neurológica? *
+                  </Label>
+                  <RadioGroup
+                    value={formData.saudeMental}
+                    onValueChange={(value) => handleRadioChange('saudeMental', value)}
+                    className="flex gap-6"
+                    required
+                  >
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="sim" id="saudeMental-sim" />
+                      <Label htmlFor="saudeMental-sim">Sim</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="nao" id="saudeMental-nao" />
+                      <Label htmlFor="saudeMental-nao">Não</Label>
+                    </div>
+                  </RadioGroup>
+                  {formData.saudeMental === 'sim' && (
+                    <div className="space-y-2">
+                      <Label htmlFor="saudeMentalDetalhes" className="text-card-foreground font-semibold">
+                        Especifique a condição e cuidados necessários *
+                      </Label>
+                      <Textarea
+                        id="saudeMentalDetalhes"
+                        name="saudeMentalDetalhes"
+                        value={formData.saudeMentalDetalhes}
+                        onChange={handleInputChange}
+                        placeholder="Ex: TEA nível 1, ansiedade generalizada, depressão. Descreva gatilhos, cuidados ou observações importantes."
+                        className="border-primary/20 focus:border-primary"
+                        required
+                      />
+                    </div>
+                  )}
+                </div>
+
                 {/* Contato de emergência */}
                 <div className="space-y-4">
                   <Label className="text-card-foreground font-semibold flex items-center gap-2 text-lg">
