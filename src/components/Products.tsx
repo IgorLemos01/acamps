@@ -1,20 +1,13 @@
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ShoppingCart } from 'lucide-react';
-import camisaBeyondWords from '@/assets/camisa-beyond-words.png';
-import camisaMissaoAracaju from '@/assets/camisa-missao-aracaju.jpeg';
+import acampsStore from '@/assets/acamps-store.jpeg';
 
 const products = [{
   id: 1,
-  name: 'Camisa Beyond Words',
-  description: 'Camisa oficial ACAMP\'S - Beyond Words. Since 1989, impossível descrever!',
-  image: camisaBeyondWords,
-  available: true
-}, {
-  id: 2,
-  name: 'Camisa Missão Aracaju 35 Anos',
-  description: 'Camisa comemorativa dos 35 anos da Missão Aracaju. Edição especial!',
-  image: camisaMissaoAracaju,
+  name: 'ACAMP\'S Store',
+  description: 'Coleção oficial ACAMP\'S - Beyond Words & Saints. Edição limitada!',
+  image: acampsStore,
   available: true
 }];
 
@@ -29,7 +22,7 @@ const Products = () => {
           <p className="text-xl text-foreground/80 max-w-2xl mx-auto animate-slide-up">Equipamentos de alta qualidade para sua experiência</p>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-1 gap-8 max-w-2xl mx-auto">
           {products.map((product, index) => (
             <Card key={product.id} className="overflow-hidden bg-card shadow-brand hover:shadow-glow transition-all duration-300 hover:scale-105 group animate-fade-in" style={{
               animationDelay: `${index * 0.2}s`
