@@ -52,8 +52,9 @@ const PagamentoOpcoes = () => {
 
       await fetch('https://script.google.com/macros/s/AKfycbyWdauoQ4pIP0bZHTxDQbEgMTsfmonk_0R-U1LJXnQKGZWzdbXeb0ArdR9fqxHhfJlYyg/exec', {
         method: 'POST',
+        mode: 'no-cors', // <- PRECISOU VOLTAR PARA O NAVEGADOR NÃO BLOQUEAR
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'text/plain', // <- O SEGREDO: text/plain em vez de application/json
         },
         body: JSON.stringify(payload)
       });
