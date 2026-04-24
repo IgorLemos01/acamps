@@ -61,25 +61,32 @@ const InscricaoSaude = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #4AC4B5 0%, #388074 100%)' }}>
+      <div className="pointer-events-none absolute -top-32 -left-32 w-96 h-96 rounded-full opacity-30 blur-3xl" style={{ background: '#F7DC6B' }} />
+      <div className="pointer-events-none absolute top-1/3 -right-40 w-[28rem] h-[28rem] rounded-full opacity-25 blur-3xl" style={{ background: '#EF8A32' }} />
+      <div className="pointer-events-none absolute bottom-0 left-1/4 w-80 h-80 rounded-full opacity-20 blur-3xl" style={{ background: '#D76523' }} />
+
       <Header />
-      
-      <main className="pt-24 pb-20">
+
+      <main className="relative pt-24 pb-20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <a href="/" className="font-brand text-4xl md:text-6xl text-foreground mb-4 animate-fade-in hover:text-primary transition-colors duration-300 inline-block">
+          <div className="text-center mb-12">
+            <a href="/" className="font-brand text-4xl md:text-6xl text-white mb-4 animate-fade-in hover:scale-105 transition-transform duration-300 inline-block drop-shadow-lg">
               ACAMP'S
             </a>
-            <h2 className="text-2xl md:text-3xl text-muted-foreground mb-4">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mt-2 mb-3" style={{ background: '#F7DC6B' }}>
+              <span className="text-sm font-bold" style={{ color: '#388074', fontFamily: 'Montserrat, sans-serif' }}>Etapa 2 de 3</span>
+            </div>
+            <h2 className="text-2xl md:text-3xl text-white mb-3 font-bold" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               Informações de Saúde
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto animate-slide-up">
+            <p className="text-lg text-white/90 max-w-2xl mx-auto animate-slide-up" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               Preencha as informações médicas e religiosas
             </p>
           </div>
-          
+
           <div className="max-w-3xl mx-auto">
-            <Card className="p-8 bg-card shadow-brand animate-slide-up">
+            <Card className="p-8 bg-white shadow-brand animate-slide-up border-t-8" style={{ borderTopColor: '#EF8A32' }}>
               <form onSubmit={handleSubmit} className="space-y-8">
                 
                 {/* Experiência anterior */}
@@ -445,9 +452,10 @@ const InscricaoSaude = () => {
 
                 <Button
                   type="submit"
-                  className="w-full bg-gradient-brand hover:bg-gradient-secondary text-foreground font-bold py-4 text-lg shadow-brand transition-all duration-300 hover:shadow-glow hover:scale-105"
+                  className="w-full text-white font-bold py-6 text-lg shadow-brand transition-all duration-300 hover:shadow-glow hover:scale-[1.02] border-b-4"
+                  style={{ background: 'linear-gradient(90deg, #EF8A32 0%, #D76523 100%)', borderBottomColor: '#388074' }}
                 >
-                  Avançar
+                  Avançar →
                 </Button>
               </form>
             </Card>
