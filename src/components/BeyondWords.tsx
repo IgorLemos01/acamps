@@ -2,20 +2,13 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import beyondWordsImage from '@/assets/beyond-words.jpg';
 const BeyondWords = () => {
-  return <section className="py-20 bg-secondary relative overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20" style={{
-      backgroundImage: `url(${beyondWordsImage})`
-    }}>
-        <div className="absolute inset-0 bg-gradient-primary opacity-60"></div>
-      </div>
-      
+  return <section className="py-20 relative overflow-hidden" style={{ backgroundColor: '#4AC4B5' }}>
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="font-brand text-4xl mb-4 animate-fade-in text-[#004466] font-bold md:text-7xl">
+          <h2 className="font-brand text-4xl mb-4 animate-fade-in text-white font-bold md:text-7xl">
             Beyond Words
           </h2>
-          <p className="text-xl max-w-2xl mx-auto animate-slide-up text-[#02064c] font-bold">
+          <p className="text-xl max-w-2xl mx-auto animate-slide-up text-white font-bold">
             Uma experiência que vai além das palavras desde 1989
           </p>
         </div>
