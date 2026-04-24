@@ -43,10 +43,10 @@ const Inscricao = () => {
             <a href="/" className="font-brand text-4xl md:text-6xl text-foreground mb-4 animate-fade-in hover:text-primary transition-colors duration-300 inline-block">
               ACAMP'S
             </a>
-            <h2 className="text-2xl md:text-3xl text-muted-foreground mb-4">
+            <h2 className="text-2xl md:text-3xl text-muted-foreground mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               Inscrição
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto animate-slide-up">
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto animate-slide-up" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               Preencha seus dados para se inscrever
             </p>
           </div>

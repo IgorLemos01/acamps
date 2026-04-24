@@ -1,11 +1,11 @@
 import { MapPin, Instagram, Heart } from 'lucide-react';
 const Footer = () => {
-  return <footer id="contato" className="bg-primary text-primary-foreground py-16">
+  return <footer id="contato" className="bg-[#EF8A32] text-primary-foreground py-16">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-12 md:text-center">
           {/* Logo e Descrição */}
           <div className="text-center">
-            <h3 className="font-brand text-4xl mb-4 text-secondary">
+            <h3 className="font-brand text-4xl mb-4 text-white">
               ACAMP'S
             </h3>
             <p className="text-lg leading-relaxed">Uma experiência transformadora e inesquecível para as suas férias.</p>
