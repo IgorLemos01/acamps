@@ -6,10 +6,10 @@ const YouTubeVideo = () => {
     <section id="video" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="font-brand text-4xl md:text-6xl text-foreground mb-4 animate-fade-in">
+          <h2 className="font-brand text-4xl md:text-6xl text-[#F7DC6B] mb-4 animate-fade-in">
             Veja como foi incrível
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto animate-slide-up">
+          <p className="text-xl text-white max-w-2xl mx-auto animate-slide-up">
             Assista ao vídeo e veja a experiência transformadora do ACAMP'S
           </p>
         </div>
