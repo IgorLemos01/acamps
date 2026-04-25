@@ -173,7 +173,7 @@ const InscricaoSaude = () => {
                       value={formData.alergiaMedicamento}
                       onChange={handleInputChange}
                       placeholder="Descreva suas alergias medicamentosas ou 'Não'"
-                      className="border-primary/20 focus:border-primary"
+                      className="border-primary/20 focus:border-primary bg-white text-black placeholder:text-gray-400"
                       required
                     />
                   </div>
@@ -188,7 +188,7 @@ const InscricaoSaude = () => {
                       value={formData.medicamentoContinuo}
                       onChange={handleInputChange}
                       placeholder="Informe nome do remédio, dosagem e horário, ou 'Não'"
-                      className="border-primary/20 focus:border-primary"
+                      className="border-primary/20 focus:border-primary bg-white text-black placeholder:text-gray-400"
                       required
                     />
                   </div>
@@ -204,7 +204,7 @@ const InscricaoSaude = () => {
                     value={formData.comorbidade}
                     onChange={handleInputChange}
                     placeholder="Descreva suas comorbidades ou 'Não'"
-                    className="border-primary/20 focus:border-primary"
+                    className="border-primary/20 focus:border-primary bg-white text-black placeholder:text-gray-400"
                     required
                   />
                 </div>
@@ -241,7 +241,7 @@ const InscricaoSaude = () => {
                         value={formData.saudeMentalDetalhes}
                         onChange={handleInputChange}
                         placeholder="Ex: TEA nível 1, ansiedade generalizada, depressão. Descreva gatilhos, cuidados ou observações importantes."
-                        className="border-primary/20 focus:border-primary"
+                        className="border-primary/20 focus:border-primary bg-white text-black placeholder:text-gray-400"
                         required
                       />
                     </div>
@@ -267,7 +267,7 @@ const InscricaoSaude = () => {
                         onChange={handleInputChange}
                         required
                         placeholder="Nome do contato"
-                        className="border-primary/20 focus:border-primary"
+                        className="border-primary/20 focus:border-primary bg-white text-black placeholder:text-gray-400"
                       />
                     </div>
 
@@ -283,7 +283,7 @@ const InscricaoSaude = () => {
                         onChange={handleInputChange}
                         required
                         placeholder="(11) 99999-9999"
-                        className="border-primary/20 focus:border-primary"
+                        className="border-primary/20 focus:border-primary bg-white text-black placeholder:text-gray-400"
                       />
                     </div>
 
@@ -299,7 +299,7 @@ const InscricaoSaude = () => {
                         onChange={handleInputChange}
                         required
                         placeholder="Ex: Mãe, Pai, Irmão"
-                        className="border-primary/20 focus:border-primary"
+                        className="border-primary/20 focus:border-primary bg-white text-black placeholder:text-gray-400"
                       />
                     </div>
                   </div>
