@@ -52,75 +52,78 @@ const InscricaoTermo = () => {
     setIsLoading(true);
 
     try {
-      // Recuperar dados das páginas anteriores
-      const inscricaoData = JSON.parse(sessionStorage.getItem('inscricaoData') || '{}');
-      const saudeData = JSON.parse(sessionStorage.getItem('inscricaoSaudeData') || '{}');
+  setIsLoading(true);
 
-      // Preparar dados completos para envio
-      const payload = {
-        nome: inscricaoData.nome || '',
-        email: inscricaoData.email || '',
-        telefone: inscricaoData.telefone || '',
-        idade: inscricaoData.idade || '',
-        cpf: inscricaoData.cpf || '',
-        rg: inscricaoData.rg || '',
-        participou: saudeData.jaParticipou || '',
-        vegano: saudeData.dieta || '',
-        intolerancia: saudeData.intoleranciaLactose || '',
-        alergia: saudeData.alergiaMedicamento || '',
-        medicamento: saudeData.medicamentoContinuo || '',
-        comorbidade: saudeData.comorbidade || '',
-        emergencia_nome: saudeData.contatoEmergenciaNome || '',
-        emergencia_tel: saudeData.contatoEmergenciaTelefone || '',
-        emergencia_parentesco: saudeData.grauParentesco || '',
-        batizado: saudeData.batizadoCatolico || '',
-        eucaristia: saudeData.primeiraEucaristia || '',
-        crismado: saudeData.crismado || '',
-        saude_mental: saudeData.saudeMental || '',
-        saude_mental_detalhes: saudeData.saudeMentalDetalhes || '',
-        hospedagem: saudeData.hospedagem || '',
-        transporte: saudeData.transporte || '',
-        modalidade: modalidade
-      };
+  // Recuperar dados das páginas anteriores
+  const inscricaoData = JSON.parse(sessionStorage.getItem('inscricaoData') || '{}');
+  const saudeData = JSON.parse(sessionStorage.getItem('inscricaoSaudeData') || '{}');
 
-      // Log para debug
-      console.log('Enviando dados:', payload);
-
-      // Enviar para Google Sheets
-      const response = await fetch('https://script.google.com/macros/s/AKfycbyWdauoQ4pIP0bZHTxDQbEgMTsfmonk_0R-U1LJXnQKGZWzdbXeb0ArdR9fqxHhfJlYyg/exec', {
-        method: 'POST',
-        mode: 'no-cors',
-        // Os headers foram removidos propositadamente aqui para que o navegador não corte os dados
-        body: JSON.stringify(payload)
-      });
-
-      console.log('Resposta recebida');
-
-      // Salvar modalidade no sessionStorage
-      sessionStorage.setItem('modalidade', modalidade);
-      
-      toast({
-        title: "Inscrição finalizada!",
-        description: "Redirecionando para pagamento...",
-      });
-
-      // Delay pequeno antes de redirecionar
-      setTimeout(() => {
-        navigate('/pagamento');
-      }, 1500);
-      
-    } catch (error) {
-      console.error('Erro detalhado:', error);
-      toast({
-        title: "Erro ao enviar inscrição",
-        description: error instanceof Error ? error.message : "Tente novamente em alguns instantes.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsLoading(false);
-    }
+  // Preparar dados completos para envio
+  const payload = {
+    nome: inscricaoData.nome || '',
+    email: inscricaoData.email || '',
+    telefone: inscricaoData.telefone || '',
+    idade: inscricaoData.idade || '',
+    cpf: inscricaoData.cpf || '',
+    rg: inscricaoData.rg || '',
+    participou: saudeData.jaParticipou || '',
+    vegano: saudeData.dieta || '',
+    intolerancia: saudeData.intoleranciaLactose || '',
+    alergia: saudeData.alergiaMedicamento || '',
+    medicamento: saudeData.medicamentoContinuo || '',
+    comorbidade: saudeData.comorbidade || '',
+    emergencia_nome: saudeData.contatoEmergenciaNome || '',
+    emergencia_tel: saudeData.contatoEmergenciaTelefone || '',
+    emergencia_parentesco: saudeData.grauParentesco || '',
+    batizado: saudeData.batizadoCatolico || '',
+    eucaristia: saudeData.primeiraEucaristia || '',
+    crismado: saudeData.crismado || '',
+    saude_mental: saudeData.saudeMental || '',
+    saude_mental_detalhes: saudeData.saudeMentalDetalhes || '',
+    hospedagem: saudeData.hospedagem || '',
+    transporte: saudeData.transporte || '',
+    modalidade: modalidade
   };
 
+  // Log para debug
+  console.log('Enviando dados:', payload);
+
+  // O SEGREDO: Empacotar como formulário para o navegador não "limpar" o conteúdo
+  const formData = new URLSearchParams();
+  formData.append('payload', JSON.stringify(payload));
+
+  // Enviar para Google Sheets
+  await fetch('https://script.google.com/macros/s/AKfycbyWdauoQ4pIP0bZHTxDQbEgMTsfmonk_0R-U1LJXnQKGZWzdbXeb0ArdR9fqxHhfJlYyg/exec', {
+    method: 'POST',
+    mode: 'no-cors',
+    body: formData // Enviamos o formulário em vez do JSON bruto
+  });
+
+  console.log('Dados enviados para o script do Google');
+
+  // Salvar modalidade no sessionStorage
+  sessionStorage.setItem('modalidade', modalidade);
+  
+  toast({
+    title: "Inscrição finalizada!",
+    description: "Redirecionando para pagamento...",
+  });
+
+  // Delay pequeno antes de redirecionar
+  setTimeout(() => {
+    navigate('/pagamento/opcoes'); // Ajustado para a rota correta de opções
+  }, 1500);
+  
+} catch (error) {
+  console.error('Erro detalhado:', error);
+  toast({
+    title: "Erro ao enviar inscrição",
+    description: "Tente novamente em alguns instantes.",
+    variant: "destructive",
+  });
+} finally {
+  setIsLoading(false);
+}
   return (
     <div className="min-h-screen relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #4AC4B5 0%, #388074 100%)' }}>
       <div className="pointer-events-none absolute -top-32 -left-32 w-96 h-96 rounded-full opacity-30 blur-3xl" style={{ background: '#F7DC6B' }} />
