@@ -44,18 +44,14 @@ const Inscricao = () => {
 
       <main className="relative pt-20 sm:pt-24 pb-12 sm:pb-20">
         <div className="container mx-auto px-3 sm:px-4">
-          <div className="text-center mb-8 sm:mb-12">
-            <a href="/" className="font-brand text-3xl sm:text-4xl md:text-6xl text-white mb-4 animate-fade-in hover:scale-105 transition-transform duration-300 inline-block drop-shadow-lg">
+          <div className="text-center mb-12">
+            <a href="/" className="font-brand text-4xl md:text-6xl text-white animate-fade-in hover:scale-105 transition-transform duration-300 block drop-shadow-lg">
               ACAMP'S
             </a>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mt-2 mb-3" style={{ background: '#F7DC6B' }}>
-              <Sparkles className="w-4 h-4" style={{ color: '#388074' }} />
-              <span className="text-sm font-bold" style={{ color: '#388074', fontFamily: 'Montserrat, sans-serif' }}>Faça sua inscrição</span>
-            </div>
-            <h2 className="text-xl sm:text-2xl md:text-3xl text-white mb-3 font-bold" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl text-white mt-4 mb-3 font-bold" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               Inscrição
             </h2>
-            <p className="text-base sm:text-lg text-white/90 max-w-2xl mx-auto animate-slide-up px-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <p className="text-lg text-white/90 max-w-2xl mx-auto animate-slide-up px-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               Preencha seus dados para se inscrever
             </p>
           </div>
