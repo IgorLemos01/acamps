@@ -86,13 +86,11 @@ const InscricaoTermo = () => {
       // Log para debug
       console.log('Enviando dados:', payload);
 
-      // Enviar para Google Sheets com no-cors
+      // Enviar para Google Sheets
       const response = await fetch('https://script.google.com/macros/s/AKfycbyWdauoQ4pIP0bZHTxDQbEgMTsfmonk_0R-U1LJXnQKGZWzdbXeb0ArdR9fqxHhfJlYyg/exec', {
         method: 'POST',
-        mode: 'no-cors', // <- PRECISOU VOLTAR PARA O NAVEGADOR NÃO BLOQUEAR
-        headers: {
-          'Content-Type': 'text/plain', // <- O SEGREDO: text/plain em vez de application/json
-        },
+        mode: 'no-cors',
+        // Os headers foram removidos propositadamente aqui para que o navegador não corte os dados
         body: JSON.stringify(payload)
       });
 
