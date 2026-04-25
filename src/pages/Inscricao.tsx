@@ -86,7 +86,7 @@ const Inscricao = () => {
                         onChange={handleInputChange}
                         required
                         placeholder="Digite seu nome completo"
-                        className="border-2 bg-white text-foreground border-[#4AC4B5]/40 focus:border-[#EF8A32] focus-visible:ring-[#F7DC6B]"
+                        className="border-2 bg-white text-black border-[#4AC4B5]/40 focus:border-[#EF8A32] focus-visible:ring-[#F7DC6B]"
                       />
                     </div>
 
@@ -102,7 +102,7 @@ const Inscricao = () => {
                         onChange={handleInputChange}
                         required
                         placeholder="seu@email.com"
-                        className="border-2 bg-white text-foreground border-[#4AC4B5]/40 focus:border-[#EF8A32] focus-visible:ring-[#F7DC6B]"
+                        className="border-2 bg-white text-black border-[#4AC4B5]/40 focus:border-[#EF8A32] focus-visible:ring-[#F7DC6B]"
                       />
                     </div>
                   </div>
@@ -120,7 +120,7 @@ const Inscricao = () => {
                         onChange={handleInputChange}
                         required
                         placeholder="(11) 99999-9999"
-                        className="border-2 bg-white text-foreground border-[#4AC4B5]/40 focus:border-[#EF8A32] focus-visible:ring-[#F7DC6B]"
+                        className="border-2 bg-white text-black border-[#4AC4B5]/40 focus:border-[#EF8A32] focus-visible:ring-[#F7DC6B]"
                       />
                     </div>
 
@@ -136,7 +136,7 @@ const Inscricao = () => {
                         onChange={handleInputChange}
                         required
                         placeholder="Ex: 25"
-                        className="border-2 bg-white text-foreground border-[#4AC4B5]/40 focus:border-[#EF8A32] focus-visible:ring-[#F7DC6B]"
+                        className="border-2 bg-white text-black border-[#4AC4B5]/40 focus:border-[#EF8A32] focus-visible:ring-[#F7DC6B]"
                       />
                     </div>
                   </div>
@@ -164,7 +164,7 @@ const Inscricao = () => {
                         onChange={handleInputChange}
                         required
                         placeholder="000.000.000-00"
-                        className="border-2 bg-white text-foreground border-[#4AC4B5]/40 focus:border-[#EF8A32] focus-visible:ring-[#F7DC6B]"
+                        className="border-2 bg-white text-black border-[#4AC4B5]/40 focus:border-[#EF8A32] focus-visible:ring-[#F7DC6B]"
                       />
                     </div>
 
@@ -180,7 +180,7 @@ const Inscricao = () => {
                         onChange={handleInputChange}
                         required
                         placeholder="00.000.000-0"
-                        className="border-2 bg-white text-foreground border-[#4AC4B5]/40 focus:border-[#EF8A32] focus-visible:ring-[#F7DC6B]"
+                        className="border-2 bg-white text-black border-[#4AC4B5]/40 focus:border-[#EF8A32] focus-visible:ring-[#F7DC6B]"
                       />
                     </div>
                   </div>
