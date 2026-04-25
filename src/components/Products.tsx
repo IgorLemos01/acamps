@@ -13,13 +13,13 @@ const products = [{
 
 const Products = () => {
   return (
-    <section id="produtos" className="py-20 bg-background">
+    <section id="produtos" className="py-12 sm:py-16 md:py-20 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="font-brand text-4xl md:text-6xl text-foreground mb-4 animate-fade-in">
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="font-brand text-3xl sm:text-4xl md:text-6xl text-foreground mb-4 animate-fade-in">
             Produtos Exclusivos
           </h2>
-          <p className="text-xl text-foreground/80 max-w-2xl mx-auto animate-slide-up">Equipamentos de alta qualidade para sua experiência</p>
+          <p className="text-base sm:text-xl text-foreground/80 max-w-2xl mx-auto animate-slide-up px-2">Equipamentos de alta qualidade para sua experiência</p>
         </div>
         
         <div className="grid md:grid-cols-1 gap-8 max-w-2xl mx-auto">
@@ -31,16 +31,16 @@ const Products = () => {
                 <img 
                   src={product.image} 
                   alt={product.name}
-                  className="w-full h-72 object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-56 sm:h-72 object-cover object-center transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-brand opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
               </div>
               
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-card-foreground mb-2">
+              <div className="p-5 sm:p-6">
+                <h3 className="text-xl sm:text-2xl font-bold text-card-foreground mb-2">
                   {product.name}
                 </h3>
-                <p className="text-muted-foreground mb-4">
+                <p className="text-sm sm:text-base text-muted-foreground mb-4">
                   {product.description}
                 </p>
                 <div className="flex items-center justify-center">

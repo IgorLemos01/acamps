@@ -22,11 +22,11 @@ const Testimonials = () => {
     }, 5000);
     return () => clearInterval(timer);
   }, []);
-  return <section id="testemunhos" className="py-20 bg-[#4AC4B5]">
+  return <section id="testemunhos" className="py-12 sm:py-16 md:py-20 bg-[#4AC4B5]">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="font-brand text-4xl md:text-6xl text-foreground mb-4 animate-fade-in">testemunhos do acamp´s</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto animate-slide-up">
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="font-brand text-3xl sm:text-4xl md:text-6xl text-foreground mb-4 animate-fade-in">testemunhos do acamp´s</h2>
+          <p className="text-base sm:text-xl text-muted-foreground max-w-2xl mx-auto animate-slide-up px-2">
             Experiências reais de quem já viveu a aventura ACAMP'S
           </p>
         </div>
@@ -36,25 +36,25 @@ const Testimonials = () => {
             <div className="flex transition-all duration-700 ease-in-out" style={{
             transform: `translateX(-${currentIndex * 100}%)`
           }}>
-              {testimonials.map(testimonial => <div key={testimonial.id} className="w-full flex-shrink-0 px-4">
-                  <Card className="mx-auto max-w-4xl p-10 bg-gradient-to-br from-card to-card/80 backdrop-blur-sm border-primary/20 shadow-2xl relative overflow-hidden group hover:shadow-brand transition-all duration-500">
+              {testimonials.map(testimonial => <div key={testimonial.id} className="w-full flex-shrink-0 px-2 sm:px-4">
+                  <Card className="mx-auto max-w-4xl p-5 sm:p-8 md:p-10 bg-gradient-to-br from-card to-card/80 backdrop-blur-sm border-primary/20 shadow-2xl relative overflow-hidden group hover:shadow-brand transition-all duration-500">
                     {/* Background decorative elements */}
                     <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-transparent rounded-full -translate-y-16 translate-x-16"></div>
                     <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-accent/10 to-transparent rounded-full translate-y-12 -translate-x-12"></div>
                     
-                    <Quote className="absolute top-6 left-6 w-12 h-12 text-primary/30 group-hover:text-primary/50 transition-colors duration-300" />
+                    <Quote className="absolute top-3 left-3 sm:top-6 sm:left-6 w-8 h-8 sm:w-12 sm:h-12 text-primary/30 group-hover:text-primary/50 transition-colors duration-300" />
                     
                     <div className="relative text-center">
-                      <p className="text-lg md:text-xl leading-relaxed mb-8 italic px-8 text-neutral-950">
+                      <p className="text-sm sm:text-lg md:text-xl leading-relaxed mb-6 sm:mb-8 italic px-2 sm:px-8 text-neutral-950">
                         "{testimonial.content}"
                       </p>
                       
-                      <div className="flex items-center justify-center">
-                        <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent mr-4"></div>
-                        <h4 className="text-xl md:text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                      <div className="flex items-center justify-center flex-wrap gap-2">
+                        <div className="w-8 sm:w-16 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+                        <h4 className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                           {testimonial.name}
                         </h4>
-                        <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent ml-4"></div>
+                        <div className="w-8 sm:w-16 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
                       </div>
                     </div>
                   </Card>
