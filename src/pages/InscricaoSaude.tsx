@@ -68,37 +68,37 @@ const InscricaoSaude = () => {
 
       <Header />
 
-      <main className="relative pt-24 pb-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <a href="/" className="font-brand text-4xl md:text-6xl text-white mb-4 animate-fade-in hover:scale-105 transition-transform duration-300 inline-block drop-shadow-lg">
+      <main className="relative pt-20 sm:pt-24 pb-12 sm:pb-20">
+        <div className="container mx-auto px-3 sm:px-4">
+          <div className="text-center mb-8 sm:mb-12">
+            <a href="/" className="font-brand text-3xl sm:text-4xl md:text-6xl text-white mb-4 animate-fade-in hover:scale-105 transition-transform duration-300 inline-block drop-shadow-lg">
               ACAMP'S
             </a>
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mt-2 mb-3" style={{ background: '#F7DC6B' }}>
               <span className="text-sm font-bold" style={{ color: '#388074', fontFamily: 'Montserrat, sans-serif' }}>Etapa 2 de 3</span>
             </div>
-            <h2 className="text-2xl md:text-3xl text-white mb-3 font-bold" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <h2 className="text-xl sm:text-2xl md:text-3xl text-white mb-3 font-bold" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               Informações de Saúde
             </h2>
-            <p className="text-lg text-white/90 max-w-2xl mx-auto animate-slide-up" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <p className="text-base sm:text-lg text-white/90 max-w-2xl mx-auto animate-slide-up px-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               Preencha as informações médicas e religiosas
             </p>
           </div>
 
           <div className="max-w-3xl mx-auto">
-            <Card className="p-8 bg-white shadow-brand animate-slide-up border-t-8" style={{ borderTopColor: '#EF8A32' }}>
-              <form onSubmit={handleSubmit} className="space-y-8">
+            <Card className="p-5 sm:p-8 bg-white shadow-brand animate-slide-up border-t-8" style={{ borderTopColor: '#EF8A32' }}>
+              <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
                 
                 {/* Experiência anterior */}
                 <div className="space-y-4">
-                  <Label className="text-card-foreground font-semibold flex items-center gap-2 text-lg">
+                  <Label className="text-card-foreground font-semibold flex items-center gap-2 text-base sm:text-lg">
                     <Users className="w-5 h-5 text-primary" />
                     Já participou de algum ACAMP'S? *
                   </Label>
                   <RadioGroup
                     value={formData.jaParticipou}
                     onValueChange={(value) => handleRadioChange('jaParticipou', value)}
-                    className="flex gap-6"
+                    className="flex flex-wrap gap-4 sm:gap-6"
                     required
                   >
                     <div className="flex items-center space-x-2">
@@ -114,7 +114,7 @@ const InscricaoSaude = () => {
 
                 {/* Dieta */}
                 <div className="space-y-4">
-                  <Label className="text-card-foreground font-semibold flex items-center gap-2 text-lg">
+                  <Label className="text-card-foreground font-semibold flex items-center gap-2 text-base sm:text-lg">
                     <Heart className="w-5 h-5 text-secondary" />
                     Você é vegano ou vegetariano? *
                   </Label>
@@ -141,13 +141,13 @@ const InscricaoSaude = () => {
 
                 {/* Intolerância lactose */}
                 <div className="space-y-4">
-                  <Label className="text-card-foreground font-semibold text-lg">
+                  <Label className="text-card-foreground font-semibold text-base sm:text-lg">
                     Você possui intolerância à lactose? *
                   </Label>
                   <RadioGroup
                     value={formData.intoleranciaLactose}
                     onValueChange={(value) => handleRadioChange('intoleranciaLactose', value)}
-                    className="flex gap-6"
+                    className="flex flex-wrap gap-4 sm:gap-6"
                     required
                   >
                     <div className="flex items-center space-x-2">
@@ -162,7 +162,7 @@ const InscricaoSaude = () => {
                 </div>
 
                 {/* Informações médicas */}
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="alergiaMedicamento" className="text-card-foreground font-semibold">
                       Tem alergia a algum medicamento? Se sim, qual? *
@@ -211,14 +211,14 @@ const InscricaoSaude = () => {
 
                 {/* Saúde mental / neurodivergência */}
                 <div className="space-y-4">
-                  <Label className="text-card-foreground font-semibold flex items-center gap-2 text-lg">
+                  <Label className="text-card-foreground font-semibold flex items-start gap-2 text-base sm:text-lg">
                     <Brain className="w-5 h-5 text-secondary" />
-                    Possui autismo, ansiedade, depressão ou outra condição psicológica/neurológica? *
+                    <span>Possui autismo, ansiedade, depressão ou outra condição psicológica/neurológica? *</span>
                   </Label>
                   <RadioGroup
                     value={formData.saudeMental}
                     onValueChange={(value) => handleRadioChange('saudeMental', value)}
-                    className="flex gap-6"
+                    className="flex flex-wrap gap-4 sm:gap-6"
                     required
                   >
                     <div className="flex items-center space-x-2">
@@ -250,11 +250,11 @@ const InscricaoSaude = () => {
 
                 {/* Contato de emergência */}
                 <div className="space-y-4">
-                  <Label className="text-card-foreground font-semibold flex items-center gap-2 text-lg">
+                  <Label className="text-card-foreground font-semibold flex items-center gap-2 text-base sm:text-lg">
                     <Phone className="w-5 h-5 text-accent" />
                     Contato de Emergência
                   </Label>
-                  <div className="grid md:grid-cols-3 gap-6">
+                  <div className="grid md:grid-cols-3 gap-4 sm:gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="contatoEmergenciaNome" className="text-card-foreground font-semibold">
                         Nome *
@@ -307,7 +307,7 @@ const InscricaoSaude = () => {
 
                 {/* Informações religiosas */}
                 <div className="space-y-6">
-                  <Label className="text-card-foreground font-semibold flex items-center gap-2 text-lg">
+                  <Label className="text-card-foreground font-semibold flex items-center gap-2 text-base sm:text-lg">
                     <Cross className="w-5 h-5 text-primary" />
                     Informações Religiosas
                   </Label>
@@ -319,7 +319,7 @@ const InscricaoSaude = () => {
                     <RadioGroup
                       value={formData.batizadoCatolico}
                       onValueChange={(value) => handleRadioChange('batizadoCatolico', value)}
-                      className="flex gap-6"
+                      className="flex flex-wrap gap-4 sm:gap-6"
                       required
                     >
                       <div className="flex items-center space-x-2">
@@ -340,7 +340,7 @@ const InscricaoSaude = () => {
                     <RadioGroup
                       value={formData.primeiraEucaristia}
                       onValueChange={(value) => handleRadioChange('primeiraEucaristia', value)}
-                      className="flex gap-6"
+                      className="flex flex-wrap gap-4 sm:gap-6"
                       required
                     >
                       <div className="flex items-center space-x-2">
@@ -361,7 +361,7 @@ const InscricaoSaude = () => {
                     <RadioGroup
                       value={formData.crismado}
                       onValueChange={(value) => handleRadioChange('crismado', value)}
-                      className="flex gap-6"
+                      className="flex flex-wrap gap-4 sm:gap-6"
                       required
                     >
                       <div className="flex items-center space-x-2">
@@ -379,7 +379,7 @@ const InscricaoSaude = () => {
 
                 {/* Hospedagem */}
                 <div className="space-y-4">
-                  <Label className="text-card-foreground font-semibold flex items-center gap-2 text-lg">
+                  <Label className="text-card-foreground font-semibold flex items-center gap-2 text-base sm:text-lg">
                     <Tent className="w-5 h-5 text-accent" />
                     Hospedagem no evento *
                   </Label>
@@ -405,7 +405,7 @@ const InscricaoSaude = () => {
 
                 {/* Transporte */}
                 <div className="space-y-4">
-                  <Label className="text-card-foreground font-semibold flex items-center gap-2 text-lg">
+                  <Label className="text-card-foreground font-semibold flex items-center gap-2 text-base sm:text-lg">
                     <Bus className="w-5 h-5 text-primary" />
                     Como você irá ao evento? *
                   </Label>
@@ -452,7 +452,7 @@ const InscricaoSaude = () => {
 
                 <Button
                   type="submit"
-                  className="w-full text-white font-bold py-6 text-lg shadow-brand transition-all duration-300 hover:shadow-glow hover:scale-[1.02] border-b-4"
+                  className="w-full text-white font-bold py-5 sm:py-6 text-base sm:text-lg shadow-brand transition-all duration-300 hover:shadow-glow hover:scale-[1.02] border-b-4"
                   style={{ background: 'linear-gradient(90deg, #EF8A32 0%, #D76523 100%)', borderBottomColor: '#388074' }}
                 >
                   Avançar →

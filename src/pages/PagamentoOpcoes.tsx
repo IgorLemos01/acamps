@@ -88,45 +88,45 @@ const PagamentoOpcoes = () => {
     <div className="min-h-screen bg-background">
       <Header />
       
-      <main className="pt-24 pb-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <a href="/" className="font-brand text-4xl md:text-6xl text-foreground mb-4 animate-fade-in hover:text-primary transition-colors duration-300 inline-block">
+      <main className="pt-20 sm:pt-24 pb-12 sm:pb-20">
+        <div className="container mx-auto px-3 sm:px-4">
+          <div className="text-center mb-10 sm:mb-16">
+            <a href="/" className="font-brand text-3xl sm:text-4xl md:text-6xl text-foreground mb-4 animate-fade-in hover:text-primary transition-colors duration-300 inline-block">
               ACAMP'S
             </a>
-            <h2 className="text-2xl md:text-3xl text-muted-foreground mb-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl text-muted-foreground mb-4">
               Formas de Pagamento
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto animate-slide-up">
+            <p className="text-base sm:text-xl text-muted-foreground max-w-2xl mx-auto animate-slide-up px-2">
               Escolha a forma de pagamento que preferir
             </p>
           </div>
           
           <div className="max-w-2xl mx-auto">
-            <Card className="p-8 bg-card shadow-brand animate-slide-up">
-              <div className="space-y-6">
+            <Card className="p-5 sm:p-8 bg-card shadow-brand animate-slide-up">
+              <div className="space-y-4 sm:space-y-6">
                 
                 <Button
                   onClick={handleCartao}
-                  className="w-full bg-gradient-brand hover:bg-gradient-secondary text-foreground font-bold py-6 text-xl shadow-brand transition-all duration-300 hover:shadow-glow hover:scale-105 rounded-xl"
+                  className="w-full bg-gradient-brand hover:bg-gradient-secondary text-foreground font-bold py-5 sm:py-6 text-base sm:text-xl shadow-brand transition-all duration-300 hover:shadow-glow hover:scale-105 rounded-xl"
                 >
-                  <CreditCard className="w-6 h-6 mr-3" />
+                  <CreditCard className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3" />
                   Cartão de Crédito
                 </Button>
 
                 <Button
                   onClick={handlePix}
-                  className="w-full bg-accent hover:bg-accent/90 text-white font-bold py-6 text-xl shadow-glow transition-all duration-300 hover:scale-105 rounded-xl"
+                  className="w-full bg-accent hover:bg-accent/90 text-white font-bold py-5 sm:py-6 text-base sm:text-xl shadow-glow transition-all duration-300 hover:scale-105 rounded-xl"
                 >
-                  <Banknote className="w-6 h-6 mr-3" />
+                  <Banknote className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3" />
                   PIX
                 </Button>
 
                 <Button
                   onClick={handleCarne}
-                  className="w-full bg-secondary hover:bg-secondary/90 text-white font-bold py-6 text-xl shadow-glow transition-all duration-300 hover:scale-105 rounded-xl"
+                  className="w-full bg-secondary hover:bg-secondary/90 text-white font-bold py-5 sm:py-6 text-base sm:text-xl shadow-glow transition-all duration-300 hover:scale-105 rounded-xl"
                 >
-                  <FileText className="w-6 h-6 mr-3" />
+                  <FileText className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3" />
                   Carnê
                 </Button>
               </div>
