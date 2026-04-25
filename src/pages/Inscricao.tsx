@@ -42,38 +42,38 @@ const Inscricao = () => {
 
       <Header />
 
-      <main className="relative pt-24 pb-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <a href="/" className="font-brand text-4xl md:text-6xl text-white mb-4 animate-fade-in hover:scale-105 transition-transform duration-300 inline-block drop-shadow-lg">
+      <main className="relative pt-20 sm:pt-24 pb-12 sm:pb-20">
+        <div className="container mx-auto px-3 sm:px-4">
+          <div className="text-center mb-8 sm:mb-12">
+            <a href="/" className="font-brand text-3xl sm:text-4xl md:text-6xl text-white mb-4 animate-fade-in hover:scale-105 transition-transform duration-300 inline-block drop-shadow-lg">
               ACAMP'S
             </a>
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mt-2 mb-3" style={{ background: '#F7DC6B' }}>
               <Sparkles className="w-4 h-4" style={{ color: '#388074' }} />
               <span className="text-sm font-bold" style={{ color: '#388074', fontFamily: 'Montserrat, sans-serif' }}>Faça sua inscrição</span>
             </div>
-            <h2 className="text-2xl md:text-3xl text-white mb-3 font-bold" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <h2 className="text-xl sm:text-2xl md:text-3xl text-white mb-3 font-bold" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               Inscrição
             </h2>
-            <p className="text-lg text-white/90 max-w-2xl mx-auto animate-slide-up" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <p className="text-base sm:text-lg text-white/90 max-w-2xl mx-auto animate-slide-up px-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               Preencha seus dados para se inscrever
             </p>
           </div>
 
           <div className="max-w-3xl mx-auto">
-            <Card className="p-8 bg-white shadow-brand animate-slide-up border-t-8" style={{ borderTopColor: '#EF8A32' }}>
-              <form onSubmit={handleSubmit} className="space-y-8">
+            <Card className="p-5 sm:p-8 bg-white shadow-brand animate-slide-up border-t-8" style={{ borderTopColor: '#EF8A32' }}>
+              <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
 
                 {/* Dados Pessoais */}
-                <div className="space-y-6">
-                  <h3 className="text-xl font-bold flex items-center gap-3 pb-3 border-b-2" style={{ color: '#388074', borderColor: '#F7DC6B' }}>
+                <div className="space-y-4 sm:space-y-6">
+                  <h3 className="text-lg sm:text-xl font-bold flex items-center gap-3 pb-3 border-b-2" style={{ color: '#388074', borderColor: '#F7DC6B' }}>
                     <span className="inline-flex items-center justify-center w-9 h-9 rounded-full text-white" style={{ background: '#EF8A32' }}>
                       <User className="w-5 h-5" />
                     </span>
                     Dados Pessoais
                   </h3>
 
-                  <div className="grid md:grid-cols-2 gap-6">
+                  <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="nome" className="font-semibold" style={{ color: '#388074' }}>
                         Nome Completo *
@@ -107,7 +107,7 @@ const Inscricao = () => {
                     </div>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-6">
+                  <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="telefone" className="font-semibold" style={{ color: '#388074' }}>
                         Telefone *
@@ -143,15 +143,15 @@ const Inscricao = () => {
                 </div>
 
                 {/* Documentos */}
-                <div className="space-y-6">
-                  <h3 className="text-xl font-bold flex items-center gap-3 pb-3 border-b-2" style={{ color: '#388074', borderColor: '#F7DC6B' }}>
+                <div className="space-y-4 sm:space-y-6">
+                  <h3 className="text-lg sm:text-xl font-bold flex items-center gap-3 pb-3 border-b-2" style={{ color: '#388074', borderColor: '#F7DC6B' }}>
                     <span className="inline-flex items-center justify-center w-9 h-9 rounded-full text-white" style={{ background: '#4AC4B5' }}>
                       <FileText className="w-5 h-5" />
                     </span>
                     Documentos
                   </h3>
 
-                  <div className="grid md:grid-cols-2 gap-6">
+                  <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="cpf" className="font-semibold" style={{ color: '#388074' }}>
                         CPF *
@@ -188,7 +188,7 @@ const Inscricao = () => {
 
                 <Button
                   type="submit"
-                  className="w-full text-white font-bold py-6 text-lg shadow-brand transition-all duration-300 hover:shadow-glow hover:scale-[1.02] border-b-4"
+                  className="w-full text-white font-bold py-5 sm:py-6 text-base sm:text-lg shadow-brand transition-all duration-300 hover:shadow-glow hover:scale-[1.02] border-b-4"
                   style={{ background: 'linear-gradient(90deg, #EF8A32 0%, #D76523 100%)', borderBottomColor: '#388074' }}
                 >
                   Avançar →

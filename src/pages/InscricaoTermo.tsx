@@ -131,76 +131,76 @@ const InscricaoTermo = () => {
 
       <Header />
 
-      <main className="relative pt-24 pb-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <a href="/" className="font-brand text-4xl md:text-6xl text-white mb-4 animate-fade-in hover:scale-105 transition-transform duration-300 inline-block drop-shadow-lg">
+      <main className="relative pt-20 sm:pt-24 pb-12 sm:pb-20">
+        <div className="container mx-auto px-3 sm:px-4">
+          <div className="text-center mb-8 sm:mb-12">
+            <a href="/" className="font-brand text-3xl sm:text-4xl md:text-6xl text-white mb-4 animate-fade-in hover:scale-105 transition-transform duration-300 inline-block drop-shadow-lg">
               ACAMP'S
             </a>
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mt-2 mb-3" style={{ background: '#F7DC6B' }}>
               <span className="text-sm font-bold" style={{ color: '#388074', fontFamily: 'Montserrat, sans-serif' }}>Etapa 3 de 3</span>
             </div>
-            <h2 className="text-2xl md:text-3xl text-white mb-3 font-bold" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <h2 className="text-xl sm:text-2xl md:text-3xl text-white mb-3 font-bold" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               Termos e Finalização
             </h2>
-            <p className="text-lg text-white/90 max-w-2xl mx-auto animate-slide-up" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <p className="text-base sm:text-lg text-white/90 max-w-2xl mx-auto animate-slide-up px-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               Leia e aceite os termos para finalizar sua inscrição
             </p>
           </div>
 
           <div className="max-w-3xl mx-auto">
-            <Card className="p-8 bg-white shadow-brand animate-slide-up border-t-8" style={{ borderTopColor: '#EF8A32' }}>
+            <Card className="p-5 sm:p-8 bg-white shadow-brand animate-slide-up border-t-8" style={{ borderTopColor: '#EF8A32' }}>
               
               {/* Imagem e explicação dos termos */}
-              <div className="mb-8 text-center">
-                <FileText className="w-16 h-16 text-primary mx-auto mb-4" />
-                <h2 className="text-2xl font-bold text-card-foreground mb-4">
+              <div className="mb-6 sm:mb-8 text-center">
+                <FileText className="w-12 h-12 sm:w-16 sm:h-16 text-primary mx-auto mb-4" />
+                <h2 className="text-xl sm:text-2xl font-bold text-card-foreground mb-4">
                   Termo de Compromisso ACAMP'S
                 </h2>
-                <p className="text-muted-foreground">
+                <p className="text-sm sm:text-base text-muted-foreground">
                   Para participar do ACAMP'S, é necessário ler e aceitar nossos termos de compromisso. 
                   Escolha o documento apropriado para sua idade e leia atentamente.
                 </p>
               </div>
 
               {/* Links para os documentos */}
-              <div className="grid md:grid-cols-3 gap-6 mb-8">
-                <Card className="p-6 text-center hover:shadow-md transition-shadow">
-                  <FileText className="w-8 h-8 text-primary mx-auto mb-3" />
-                  <h3 className="font-semibold mb-3">Termos e Condições</h3>
+              <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
+                <Card className="p-4 sm:p-6 text-center hover:shadow-md transition-shadow">
+                  <FileText className="w-7 h-7 sm:w-8 sm:h-8 text-primary mx-auto mb-3" />
+                  <h3 className="font-semibold text-sm sm:text-base mb-3">Termos e Condições</h3>
                   <a
                     href="/docs/termos-aceitacao-condicoes-uso.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-primary hover:text-secondary transition-colors"
+                    className="inline-flex items-center gap-2 text-sm sm:text-base text-primary hover:text-secondary transition-colors"
                   >
                     Abrir documento
                     <ExternalLink className="w-4 h-4" />
                   </a>
                 </Card>
 
-                <Card className="p-6 text-center hover:shadow-md transition-shadow">
-                  <FileText className="w-8 h-8 text-accent mx-auto mb-3" />
-                  <h3 className="font-semibold mb-3">Termo Imagem (Menores)</h3>
+                <Card className="p-4 sm:p-6 text-center hover:shadow-md transition-shadow">
+                  <FileText className="w-7 h-7 sm:w-8 sm:h-8 text-accent mx-auto mb-3" />
+                  <h3 className="font-semibold text-sm sm:text-base mb-3">Termo Imagem (Menores)</h3>
                   <a
                     href="/docs/termo-imagem-menor.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-primary hover:text-secondary transition-colors"
+                    className="inline-flex items-center gap-2 text-sm sm:text-base text-primary hover:text-secondary transition-colors"
                   >
                     Abrir documento
                     <ExternalLink className="w-4 h-4" />
                   </a>
                 </Card>
 
-                <Card className="p-6 text-center hover:shadow-md transition-shadow">
-                  <FileText className="w-8 h-8 text-secondary mx-auto mb-3" />
-                  <h3 className="font-semibold mb-3">Termo Imagem (Maiores)</h3>
+                <Card className="p-4 sm:p-6 text-center hover:shadow-md transition-shadow sm:col-span-2 md:col-span-1">
+                  <FileText className="w-7 h-7 sm:w-8 sm:h-8 text-secondary mx-auto mb-3" />
+                  <h3 className="font-semibold text-sm sm:text-base mb-3">Termo Imagem (Maiores)</h3>
                   <a
                     href="/docs/termo-imagem-maior.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-primary hover:text-secondary transition-colors"
+                    className="inline-flex items-center gap-2 text-sm sm:text-base text-primary hover:text-secondary transition-colors"
                   >
                     Abrir documento
                     <ExternalLink className="w-4 h-4" />
@@ -218,21 +218,21 @@ const InscricaoTermo = () => {
                     required
                     className="mt-1"
                   />
-                  <Label htmlFor="termo" className="text-card-foreground font-semibold cursor-pointer">
+                  <Label htmlFor="termo" className="text-sm sm:text-base text-card-foreground font-semibold cursor-pointer leading-relaxed">
                     Declaro que li e concordo com os termos de compromisso do ACAMP'S. *
                   </Label>
                 </div>
 
                 {/* Modalidade */}
-                <div className="p-6 bg-primary/10 rounded-lg border border-primary/20">
-                  <Label className="text-card-foreground font-bold text-lg mb-4 block">
+                <div className="p-4 sm:p-6 bg-primary/10 rounded-lg border border-primary/20">
+                  <Label className="text-card-foreground font-bold text-base sm:text-lg mb-4 block">
                     Você irá para o ACAMP'S como servo ou participante? *
                   </Label>
-                  <div className="flex gap-4 mb-6">
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-4 sm:mb-6">
                     <Button
                       type="button"
                       onClick={() => setModalidade('Servo')}
-                      className={`flex-1 py-4 text-lg font-bold rounded-xl transition-all duration-300 ${
+                      className={`flex-1 py-4 text-base sm:text-lg font-bold rounded-xl transition-all duration-300 ${
                         modalidade === 'Servo'
                           ? 'bg-accent text-white shadow-glow scale-105'
                           : 'bg-white/20 text-card-foreground hover:bg-white/30'
@@ -243,7 +243,7 @@ const InscricaoTermo = () => {
                     <Button
                       type="button"
                       onClick={() => setModalidade('Participante')}
-                      className={`flex-1 py-4 text-lg font-bold rounded-xl transition-all duration-300 ${
+                      className={`flex-1 py-4 text-base sm:text-lg font-bold rounded-xl transition-all duration-300 ${
                         modalidade === 'Participante'
                           ? 'bg-gradient-brand text-foreground shadow-glow scale-105'
                           : 'bg-white/20 text-card-foreground hover:bg-white/30'
@@ -257,7 +257,7 @@ const InscricaoTermo = () => {
               <Button
                   type="submit"
                   disabled={isLoading || !termoAceito || !modalidade}
-                  className="w-full text-white font-bold py-6 text-lg shadow-brand transition-all duration-300 hover:shadow-glow hover:scale-[1.02] border-b-4 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full text-white font-bold py-5 sm:py-6 text-base sm:text-lg shadow-brand transition-all duration-300 hover:shadow-glow hover:scale-[1.02] border-b-4 disabled:opacity-50 disabled:cursor-not-allowed"
                   style={{ background: 'linear-gradient(90deg, #EF8A32 0%, #D76523 100%)', borderBottomColor: '#388074' }}
                 >
                   {isLoading ? (

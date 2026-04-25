@@ -20,18 +20,19 @@ const Header = () => {
           : 'bg-transparent'
       }`}
     >
-      <div className="container mx-auto px-4 py-4">
-        <nav className="flex items-center justify-between">
-          <a href="/" className="font-brand text-3xl md:text-4xl text-foreground hover:scale-105 transition-all duration-300">
+      <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4">
+        <nav className="flex items-center justify-between gap-3">
+          <a href="/" className="font-brand text-2xl sm:text-3xl md:text-4xl text-foreground hover:scale-105 transition-all duration-300 shrink-0">
             ACAMP'S
           </a>
           
           <div className="flex items-center">
             <a 
               href="/inscricao" 
-              className="bg-gradient-brand hover:bg-gradient-secondary text-foreground font-bold px-8 py-3 rounded-full shadow-brand transition-all duration-300 hover:shadow-glow hover:scale-105"
+              className="bg-gradient-brand hover:bg-gradient-secondary text-foreground font-bold text-sm sm:text-base px-4 sm:px-8 py-2 sm:py-3 rounded-full shadow-brand transition-all duration-300 hover:shadow-glow hover:scale-105 whitespace-nowrap"
             >
-              Inscreva-se Agora
+              <span className="hidden sm:inline">Inscreva-se Agora</span>
+              <span className="sm:hidden">Inscreva-se</span>
             </a>
           </div>
         </nav>
