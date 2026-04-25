@@ -3,22 +3,22 @@ import heroImage from '@/assets/acamp-banner.jpg';
 
 const Hero = () => {
   return (
-    <section className="relative min-h-[60svh] md:min-h-[100svh] flex flex-col justify-end overflow-hidden pb-6 md:pb-32">
+    <section className="relative min-h-[65svh] md:min-h-[100svh] flex flex-col justify-end overflow-hidden pb-6 md:pb-32">
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
         style={{ backgroundImage: `url(${heroImage})` }} 
       />
-      
-      {/* Gradiente: Também escondido no mobile (hidden) e visível no PC (md:block) */}
+
+      {/* Gradiente escuro apenas para PC, pois no telemóvel os botões já têm o próprio fundo translúcido */}
       <div className="hidden md:block absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-black/30 to-transparent pointer-events-none" />
 
-      {/* Content: Escondido no mobile (hidden) e visível a partir de tablets/PC (md:block) */}
-      <div className="relative z-10 text-center px-4 w-full max-w-4xl mx-auto hidden md:block">
-        <div className="flex flex-row gap-4 justify-center items-center animate-slide-up">
+      {/* Content */}
+      <div className="relative z-10 text-center px-4 w-full max-w-4xl mx-auto">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center animate-slide-up">
           <Button 
             size="lg" 
-            className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold text-lg px-8 py-4 rounded-full shadow-glow transition-all duration-300 hover:scale-105" 
+            className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold text-base sm:text-lg px-6 sm:px-8 py-4 rounded-full shadow-glow transition-all duration-300 hover:scale-105 w-full sm:w-auto" 
             onClick={() => window.location.href = '/inscricao'}
           >
             Inscreva-se Agora
@@ -27,7 +27,7 @@ const Hero = () => {
           <Button 
             variant="outline" 
             size="lg" 
-            className="border-2 border-white/80 text-white hover:bg-white hover:text-black font-bold text-lg px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 bg-black/20 backdrop-blur-sm" 
+            className="border-2 border-foreground text-foreground hover:bg-foreground hover:text-primary font-bold text-base sm:text-lg px-6 sm:px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 w-full sm:w-auto bg-background/50 backdrop-blur-sm sm:bg-transparent sm:backdrop-blur-none" 
             onClick={() => document.getElementById('evento')?.scrollIntoView({ behavior: 'smooth' })}
           >
             Localização
@@ -36,7 +36,7 @@ const Hero = () => {
           <Button 
             variant="outline" 
             size="lg" 
-            className="border-2 border-white/80 text-white hover:bg-white hover:text-black font-bold text-lg px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 bg-black/20 backdrop-blur-sm" 
+            className="border-2 border-foreground text-foreground hover:bg-foreground hover:text-primary font-bold text-base sm:text-lg px-6 sm:px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 w-full sm:w-auto bg-background/50 backdrop-blur-sm sm:bg-transparent sm:backdrop-blur-none" 
             onClick={() => document.getElementById('produtos')?.scrollIntoView({ behavior: 'smooth' })}
           >
             Ver Produtos
