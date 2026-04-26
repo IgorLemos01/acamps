@@ -89,14 +89,14 @@ const InscricaoTermo = () => {
   console.log('Enviando dados:', payload);
 
   // O SEGREDO: Empacotar como formulário para o navegador não "limpar" o conteúdo
-  const formData = new URLSearchParams();
-  formData.append('payload', JSON.stringify(payload));
+  // ✅ DEPOIS — FormData funciona com no-cors
+  const formData = new FormData();
+    formData.append('payload', JSON.stringify(payload));
 
-  // Enviar para Google Sheets
   await fetch('https://script.google.com/macros/s/AKfycbyWdauoQ4pIP0bZHTxDQbEgMTsfmonk_0R-U1LJXnQKGZWzdbXeb0ArdR9fqxHhfJlYyg/exec', {
     method: 'POST',
     mode: 'no-cors',
-    body: formData // Enviamos o formulário em vez do JSON bruto
+    body: formData
   });
 
   console.log('Dados enviados para o script do Google');
