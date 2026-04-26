@@ -94,10 +94,11 @@ const InscricaoTermo = () => {
     formData.append('payload', JSON.stringify(payload));
 
   await fetch('https://script.google.com/macros/s/AKfycbyWdauoQ4pIP0bZHTxDQbEgMTsfmonk_0R-U1LJXnQKGZWzdbXeb0ArdR9fqxHhfJlYyg/exec', {
-    method: 'POST',
-    mode: 'no-cors',
-    body: formData
-  });
+  method: 'POST',
+  mode: 'no-cors',
+  headers: { 'Content-Type': 'text/plain' }, // text/plain é permitido em no-cors
+  body: JSON.stringify(payload)
+});
 
   console.log('Dados enviados para o script do Google');
 
