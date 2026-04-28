@@ -1,12 +1,22 @@
+import { useEffect, useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { MessageCircle, Copy } from 'lucide-react';
+import { MessageCircle, Copy, Sparkles } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import Header from '@/components/Header';
 
 const PagamentoPix = () => {
   const { toast } = useToast();
   const pixKey = 'juventudearacaju@comshalom.org';
+  const [modalidade, setModalidade] = useState('');
+
+  useEffect(() => {
+    const savedModalidade = sessionStorage.getItem('modalidade') || '';
+    setModalidade(savedModalidade);
+  }, []);
+
+  const isServo = modalidade === 'Servo';
+  const valor = isServo ? '260,00' : '300,00';
 
   const handleCopyPix = () => {
     navigator.clipboard.writeText(pixKey);
@@ -38,7 +48,27 @@ const PagamentoPix = () => {
           </div>
           
           <div className="max-w-2xl mx-auto">
-            <Card className="p-5 sm:p-8 bg-card shadow-brand animate-slide-up">
+            <Card className="p-5 sm:p-8 bg-card shadow-brand animate-slide-up overflow-hidden relative">
+              {/* Valor em destaque */}
+              <div className="relative mb-6 sm:mb-8 rounded-2xl overflow-hidden bg-gradient-to-br from-primary via-accent to-secondary p-[2px] shadow-glow">
+                <div className="bg-card rounded-2xl px-4 sm:px-6 py-5 sm:py-7 text-center">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
+                    <span className="text-xs sm:text-sm uppercase tracking-[0.2em] font-semibold text-muted-foreground">
+                      {isServo ? 'Investimento Servo' : 'Segundo Lote'}
+                    </span>
+                    <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
+                  </div>
+                  <div className="flex items-baseline justify-center gap-1">
+                    <span className="text-xl sm:text-2xl font-bold text-muted-foreground">R$</span>
+                    <span className="font-brand text-5xl sm:text-7xl bg-gradient-to-br from-primary via-accent to-secondary bg-clip-text text-transparent leading-none">
+                      {valor.split(',')[0]}
+                    </span>
+                    <span className="text-xl sm:text-2xl font-bold text-muted-foreground">,{valor.split(',')[1]}</span>
+                  </div>
+                </div>
+              </div>
+
               <div className="text-center mb-6 sm:mb-8">
                 <h3 className="text-lg sm:text-xl font-bold text-card-foreground mb-4">
                   Chave PIX
