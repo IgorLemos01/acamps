@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { CreditCard, Banknote, FileText } from 'lucide-react';
+import { CreditCard, Banknote, FileText, Wallet } from 'lucide-react';
 import Header from '@/components/Header';
 
 const PagamentoOpcoes = () => {
@@ -63,15 +63,24 @@ const PagamentoOpcoes = () => {
     }
   };
 
-  const handleCartao = () => {
-    enviarFormaPagamento('Cartão');
+  const handleCredito = () => {
+    enviarFormaPagamento('Crédito');
     if (modalidade === 'Servo') {
-      window.open('https://mpago.la/1K6mgrL', '_blank');
-      navigate('/pagamento/confirmacao');
+      window.open('https://mpago.la/13oRF7r', '_blank');
     } else {
-      window.open('https://mpago.la/2rSs9Ye', '_blank');
-      navigate('/pagamento/confirmacao');
+      window.open('https://mpago.la/1cdHsvy', '_blank');
     }
+    navigate('/pagamento/confirmacao');
+  };
+
+  const handleDebito = () => {
+    enviarFormaPagamento('Débito');
+    if (modalidade === 'Servo') {
+      window.open('https://mpago.la/1hpy481', '_blank');
+    } else {
+      window.open('https://mpago.la/2XvRKRZ', '_blank');
+    }
+    navigate('/pagamento/confirmacao');
   };
 
   const handlePix = () => {
@@ -107,11 +116,19 @@ const PagamentoOpcoes = () => {
               <div className="space-y-4 sm:space-y-6">
                 
                 <Button
-                  onClick={handleCartao}
+                  onClick={handleCredito}
                   className="w-full bg-gradient-brand hover:bg-gradient-secondary text-foreground font-bold py-5 sm:py-6 text-base sm:text-xl shadow-brand transition-all duration-300 hover:shadow-glow hover:scale-105 rounded-xl"
                 >
                   <CreditCard className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3" />
                   Cartão de Crédito
+                </Button>
+
+                <Button
+                  onClick={handleDebito}
+                  className="w-full bg-primary hover:bg-primary/90 text-white font-bold py-5 sm:py-6 text-base sm:text-xl shadow-brand transition-all duration-300 hover:shadow-glow hover:scale-105 rounded-xl"
+                >
+                  <Wallet className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3" />
+                  Cartão de Débito
                 </Button>
 
                 <Button
@@ -122,13 +139,15 @@ const PagamentoOpcoes = () => {
                   PIX
                 </Button>
 
-                <Button
-                  onClick={handleCarne}
-                  className="w-full bg-secondary hover:bg-secondary/90 text-white font-bold py-5 sm:py-6 text-base sm:text-xl shadow-glow transition-all duration-300 hover:scale-105 rounded-xl"
-                >
-                  <FileText className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3" />
-                  Carnê
-                </Button>
+                {modalidade === 'Servo' && (
+                  <Button
+                    onClick={handleCarne}
+                    className="w-full bg-secondary hover:bg-secondary/90 text-white font-bold py-5 sm:py-6 text-base sm:text-xl shadow-glow transition-all duration-300 hover:scale-105 rounded-xl"
+                  >
+                    <FileText className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3" />
+                    Carnê
+                  </Button>
+                )}
               </div>
             </Card>
           </div>
