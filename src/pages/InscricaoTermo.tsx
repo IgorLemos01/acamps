@@ -125,6 +125,8 @@ const InscricaoTermo = () => {
 } finally {
   setIsLoading(false);
 }
+  };
+
   return (
     <div className="min-h-screen relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #4AC4B5 0%, #388074 100%)' }}>
       <div className="pointer-events-none absolute -top-32 -left-32 w-96 h-96 rounded-full opacity-30 blur-3xl" style={{ background: '#F7DC6B' }} />
