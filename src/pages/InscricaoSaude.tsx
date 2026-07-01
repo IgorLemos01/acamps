@@ -393,8 +393,8 @@ const InscricaoSaude = () => {
                     required
                   >
                     <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="alojamento" id="hospedagem-alojamento" />
-                      <Label htmlFor="hospedagem-alojamento">Alojamento (vagas limitadas)</Label>
+                      <RadioGroupItem value="colchonete" id="hospedagem-colchonete" />
+                      <Label htmlFor="hospedagem-colchonete">Colchonete</Label>
                     </div>
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="barraca" id="hospedagem-barraca" />
