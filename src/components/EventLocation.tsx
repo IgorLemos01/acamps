@@ -20,7 +20,7 @@ const EventLocation = () => {
               </div>
               <p className="text-base sm:text-lg leading-relaxed">
                 Chácara da Serra<br />
-                São Cristóvão - SE
+                Areia Branca - SE
               </p>
             </Card>
             
